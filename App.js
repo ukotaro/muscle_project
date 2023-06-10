@@ -7,7 +7,6 @@ import TitleDetail from "./components/uiParts/TitleDetail"
 export default function App() {
   return (
     <View style={styles.container}>
-      <TitleDetail></TitleDetail>
     </View>
   )
 }
