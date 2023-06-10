@@ -1,25 +1,23 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React, { ReactNode } from "react"
+import { View, StyleSheet } from "react-native"
 
 type Props = {
-  height: number;
-};
+  children: ReactNode
+}
 
-const Board = ({ height }: Props) => {
+const Board = ({ children }: Props) => {
   return (
     <View style={styles.outer}>
-      <View style={[styles.shadowBox, { height: height }]} />
+      <View style={[styles.shadowBox]}>{children}</View>
     </View>
-  );
-};
+  )
+}
 
-export default Board;
+export default Board
 
 const styles = StyleSheet.create({
   outer: {
-    paddingTop: 10, // adjust this value to control the top shadow
     width: "100%",
-    padding: 10,
   },
   shadowBox: {
     backgroundColor: "#F8F4E6",
@@ -31,5 +29,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     borderRadius: 20,
+    paddingVertical: 20,
+    paddingHorizontal:20
   },
-});
+})

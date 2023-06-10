@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react"
 
 type Props = {
   title: string
-  onPress: () => {}
+  onPress: ()=>void
 }
 export default function BrownButton({ title, onPress }: Props) {
   return (
