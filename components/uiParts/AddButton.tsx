@@ -3,11 +3,10 @@ import React from "react";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-const AddButton = () => {
-  const onPress = () => {
-    console.log("ok");
-  };
-
+type Props = {
+  onPress: () => {};
+};
+const AddButton = ({ onPress }: Props) => {
   return (
     <View style={styles.iconContainer}>
       <MaterialCommunityIcons.Button
