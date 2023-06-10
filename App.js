@@ -3,6 +3,7 @@ import { Alert, StyleSheet, View } from "react-native"
 import React, { useEffect, useState } from "react"
 import TitleDetail from "./components/uiParts/TitleDetail"
 
+
 export default function App() {
   return (
     <View style={styles.container}>
