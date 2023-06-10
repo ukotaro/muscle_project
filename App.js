@@ -8,11 +8,6 @@ export default function App() {
   useEffect(()=>{alert("useEffectが動いたよ")},[])
   return (
     <View style={styles.container}>
-      <NewsKizi imageuri="https://picsum.photos/id/237/200/300" title="空箱" subtext="空箱" />
-      <NewsKizi imageuri="https://picsum.photos/id/237/200/300" title="空箱" subtext="空箱"/>
-      <NewsKizi imageuri="https://picsum.photos/id/237/200/300" title="空箱" subtext="空箱"/>
-      <NewsKizi imageuri="https://picsum.photos/id/237/200/300" title="空箱" subtext="空箱"/>
-      <NewsKizi imageuri="https://picsum.photos/id/237/200/300" title="空箱" subtext="空箱"/>
     </View>
   )
 }
