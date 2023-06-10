@@ -1,11 +1,9 @@
 import { StatusBar } from "expo-status-bar"
-import { StyleSheet, View } from "react-native"
-import NewsKizi from "./components/NewsKizi"
+import { Alert, StyleSheet, View } from "react-native"
 import React, { useEffect, useState } from "react"
+import Button from "./components/uiParts/button"
 
 export default function App() {
-  const [news, setNews] = useState([]);
-  useEffect(()=>{alert("useEffectが動いたよ")},[])
   return (
     <View style={styles.container}>
     </View>
@@ -15,7 +13,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#F8F4E6",
     alignItems: "center",
     justifyContent: "center",
   },
