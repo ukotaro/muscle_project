@@ -4,15 +4,16 @@ import React, { useEffect, useState } from "react"
 
 type Props = {
   title: string
-  onPress: () => {}
+  detail:string
+  member:number
 }
-export default function TitleDetail({}) {
+export default function TitleDetail({title,detail,member}:Props) {
   return (
     <View>
-      <Text style={styles.title}>チームごりごり</Text>
+      <Text style={styles.title}>{title}</Text>
       <View>
-        <Text style={styles.subtitle}>所属人数：3名</Text>
-        <Text style={styles.subtitle}>一言：ごりごりになろう!</Text>
+        <Text style={styles.subtitle}>所属人数：{member}名</Text>
+        <Text style={styles.subtitle}>一言：{detail}</Text>
       </View>
     </View>
   )
