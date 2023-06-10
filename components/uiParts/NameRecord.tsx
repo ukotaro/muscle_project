@@ -1,6 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Text } from "react-native";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 type Props = {
   name: string;
@@ -21,9 +20,10 @@ export default NameRecord;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#F8F4E6",
     alignItems: "flex-start",
     justifyContent: "center",
+    fontColor: "#594639",
   },
   name: {
     fontSize: 15,
