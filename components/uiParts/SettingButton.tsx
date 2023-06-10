@@ -6,20 +6,19 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 type Props = {
   onPress: () => {};
 };
-const AddButton = ({ onPress }: Props) => {
+const SettingButton = ({ onPress }: Props) => {
   return (
-    <View style={styles.iconContainer}>
-      <MaterialCommunityIcons.Button
-        size={44}
-        backgroundColor="#594639"
-        name="plus"
-        iconStyle={{ marginRight: 0 }}
-        onPress={onPress}
-      />
-    </View>
+    <MaterialCommunityIcons.Button
+      size={50}
+      color="#594639"
+      backgroundColor="#F8F4E6"
+      name="cog"
+      iconStyle={{ marginRight: 0 }}
+      onPress={onPress}
+    />
   );
 };
-export default AddButton;
+export default SettingButton;
 
 const styles = StyleSheet.create({
   iconContainer: {
