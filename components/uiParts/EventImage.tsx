@@ -5,41 +5,34 @@ type Props = {
   eventId: number;
 };
 
-const EventImage = ({ eventId }: Props) => {
-  const [event, setEvent] = useState<string>("");
-
-  return (
+export default function EventImage({ eventId }: Props) {
+  return eventId === 0 ? (
     <View style={styles.container}>
-      {eventId === 0 ? (
-        <>
-          <Image
-            style={styles.imageContainer}
-            source={require("../../assets/dumbbell.png")}
-          />
-          <Text style={styles.textContainer}>ベンチプレス</Text>
-        </>
-      ) : eventId === 1 ? (
-        <>
-          <Image
-            style={styles.imageContainer}
-            source={require("../../assets/dumbbell.png")}
-          />
-          <Text style={styles.textContainer}>スクワット</Text>
-        </>
-      ) : (
-        <>
-          <Image
-            style={styles.imageContainer}
-            source={require("../../assets/dumbbell.png")}
-          />
-          <Text style={styles.textContainer}>デッドリフト</Text>
-        </>
-      )}
+      <Image
+        style={styles.imageContainer}
+        source={require("../../assets/dumbbell.png")}
+      />
+      <Text style={styles.textContainer}>ベンチプレス</Text>
+    </View>
+  ) : eventId === 1 ? (
+    <View style={styles.container}>
+      <Image
+        style={styles.imageContainer}
+        source={require("../../assets/dumbbell.png")}
+      />
+      <Text style={styles.textContainer}>スクワット</Text>
+    </View>
+  ) : (
+    <View style={styles.container}>
+      <Image
+        style={styles.imageContainer}
+        source={require("../../assets/dumbbell.png")}
+      />
+      <Text style={styles.textContainer}>デッドリフト</Text>
     </View>
   );
-};
+}
 
-export default EventImage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -50,8 +43,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   imageContainer: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
   },
   textContainer: {
     fontSize: 26,
