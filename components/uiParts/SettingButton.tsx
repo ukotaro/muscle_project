@@ -3,10 +3,7 @@ import React from "react";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-type Props = {
-  onPress: () => {};
-};
-const SettingButton = ({ onPress }: Props) => {
+const SettingButton = () => {
   return (
     <MaterialCommunityIcons.Button
       size={50}
@@ -14,7 +11,7 @@ const SettingButton = ({ onPress }: Props) => {
       backgroundColor="#F8F4E6"
       name="cog"
       iconStyle={{ marginRight: 0 }}
-      onPress={onPress}
+      // onPress={}
     />
   );
 };
