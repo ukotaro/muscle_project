@@ -17,7 +17,9 @@ export default Board
 
 const styles = StyleSheet.create({
   outer: {
-    width: "100%",
+    width: "95%",
+    marginTop:20,
+    marginHorizontal:10
   },
   shadowBox: {
     backgroundColor: "#F8F4E6",
