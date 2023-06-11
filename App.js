@@ -5,11 +5,11 @@ import TitleDetail from "./components/uiParts/TitleDetail"
 import { NavigationContainer } from "@react-navigation/native"
 import AppNavigator from "./navigation/AppNavigator"
 import GroupList from "./screens/GroupList"
+import Setting from "./screens/Setting"
 export default function App() {
   return (
     <View style={styles.container}>
-      <GroupList/>
-      <AppNavigator />
+      <Setting></Setting>
     </View>
   )
 }
