@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 // Settingタブで表示される画面内容
-export default function SettingsScreen() {
+export default function RankingBack() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Settings!</Text>

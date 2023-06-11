@@ -4,8 +4,8 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import FirstBottomTabScreen from "../screens/TimeLine";
 import SecondBottomTabScreen from "../screens/MyPage";
-import HomeScreen from "../screens/RankingChest";
-import SettingScreen from "../screens/RankingBack";
+import RankingChest from "../screens/RankingChest";
+import RankingBack from "../screens/RankingBack";
 import { NavigationContainer } from "@react-navigation/native";
 
 const RankingTab = createMaterialTopTabNavigator();
@@ -14,8 +14,8 @@ const BottomTab = createBottomTabNavigator();
 function RankingTabNavigator() {
   return (
     <RankingTab.Navigator>
-      <RankingTab.Screen name="Home" component={HomeScreen} />
-      <RankingTab.Screen name="Setting" component={SettingScreen} />
+      <RankingTab.Screen name="胸" component={RankingChest} />
+      <RankingTab.Screen name="背中" component={RankingBack} />
     </RankingTab.Navigator>
   );
 }
