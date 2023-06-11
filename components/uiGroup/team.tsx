@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar"
 import { StyleSheet, View, Text, Button, Image, Alert } from "react-native"
 import React, { useEffect, useState } from "react"
-import Board from "../uiParts/Board"
 import TitleDetail from "../uiParts/TitleDetail"
 import BrownButton from "../uiParts/button"
+import Board from "../uiParts/Board"
 
 type Props = {
   title: string
