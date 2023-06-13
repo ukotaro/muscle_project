@@ -36,7 +36,7 @@ export default function TimeLine() {
     },
   ]
   return (
-    <View style={{ flex: 1, justifyContent: "center" }}>
+    <View style={{ flex: 1, justifyContent: "center" ,backgroundColor: "#F8F4E6"}}>
       <FlatList
         data={damyData}
         renderItem={({ item }) => (

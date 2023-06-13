@@ -33,7 +33,7 @@ export default function GroupList() {
     },
   ]
   return (
-    <>
+    <View style={{backgroundColor: "#F8F4E6"}}>
       <View style={styles.serch}>
         <TextInput style={styles.input} onChangeText={onChangeText} value={text}/>
         <View style={styles.button}>
@@ -52,7 +52,7 @@ export default function GroupList() {
           <Team title={item.title} uri={item.uri} detail={item.detail} member={item.member} />
         )}
       />
-    </>
+    </View>
   )
 }
 
