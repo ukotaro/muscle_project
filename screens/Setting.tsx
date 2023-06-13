@@ -52,10 +52,10 @@ export default function Setting({
 }
 const styles = StyleSheet.create({
   settingContainer: {
-    marginTop: 30,
     alignItems: "center",
     flexDirection: "column",
     height: "100%",
+    backgroundColor:"#F8F4E6"
   },
   input: {
     borderWidth: 1,

@@ -1,64 +1,36 @@
-import * as React from "react";
-import { View } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import FirstBottomTabScreen from "../screens/TimeLine";
-import SecondBottomTabScreen from "../screens/MyPage";
-import { NavigationContainer, Route } from "@react-navigation/native";
-import GroupList from "../screens/GroupList";
-import Header from "../components/uiParts/Header";
-import {
-  MaterialCommunityIcons,
-  AntDesign,
-  FontAwesome5,
-} from "@expo/vector-icons";
-import RankingTabNavigator from "./RankingTabNavigator";
-import MyStack from "./StackNavigator";
-import TimeLine from "../screens/TimeLine";
-import MyPage from "../screens/MyPage";
+import * as React from "react"
+import { View } from "react-native"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import FirstBottomTabScreen from "../screens/TimeLine"
+import SecondBottomTabScreen from "../screens/MyPage"
+import { NavigationContainer, Route } from "@react-navigation/native"
+import GroupList from "../screens/GroupList"
+import Header from "../components/uiParts/Header"
+import { MaterialCommunityIcons, AntDesign, FontAwesome5 } from "@expo/vector-icons"
+import RankingTabNavigator from "./RankingTabNavigator"
+import MyStack from "./StackNavigator"
+import TimeLine from "../screens/TimeLine"
+import MyPage from "../screens/MyPage"
 
-const BottomTab = createBottomTabNavigator();
+const BottomTab = createBottomTabNavigator()
 
 const screenOption = ({ route }: { route: Route<string> }) => ({
-  tabBarIcon: ({
-    focused,
-    color,
-    size,
-  }: {
-    focused: boolean;
-    color: string;
-    size: number;
-  }) => {
+  tabBarIcon: ({ focused, color, size }: { focused: boolean; color: string; size: number }) => {
     if (route.name === "マイ記録") {
       return (
-        <MaterialCommunityIcons
-          size={focused ? 30 : 20}
-          color="#594639"
-          name="file-document"
-        />
-      );
+        <MaterialCommunityIcons size={focused ? 30 : 20} color="#594639" name="file-document" />
+      )
     } else if (route.name === "タイムライン") {
-      return (
-        <AntDesign
-          size={focused ? 30 : 20}
-          color="#594639"
-          name="clockcircle"
-        />
-      );
+      return <AntDesign size={focused ? 30 : 20} color="#594639" name="clockcircle" />
     } else if (route.name === "ランキング") {
-      return (
-        <FontAwesome5 size={focused ? 30 : 20} color="#594639" name="crown" />
-      );
+      return <FontAwesome5 size={focused ? 30 : 20} color="#594639" name="crown" />
     } else if (route.name === "グループ") {
       return (
-        <MaterialCommunityIcons
-          size={focused ? 30 : 20}
-          color="#594639"
-          name="account-group"
-        />
-      );
+        <MaterialCommunityIcons size={focused ? 30 : 20} color="#594639" name="account-group" />
+      )
     }
   },
-});
+})
 
 export default function AppNavigator() {
   return (
@@ -74,14 +46,11 @@ export default function AppNavigator() {
           }}
         >
           <BottomTab.Screen name="マイ記録" component={MyStack} />
-          <BottomTab.Screen
-            name="タイムライン"
-            component={TimeLine}
-          />
+          <BottomTab.Screen name="タイムライン" component={TimeLine} />
           <BottomTab.Screen name="ランキング" component={RankingTabNavigator} />
           <BottomTab.Screen name="グループ" component={GroupList} />
         </BottomTab.Navigator>
       </View>
     </NavigationContainer>
-  );
+  )
 }
