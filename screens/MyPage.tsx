@@ -1,7 +1,11 @@
+
+
 import * as React from "react"
 import { Text, View, FlatList, ScrollView, Button, Alert ,StyleSheet} from "react-native"
 import Post from "../components/uiGroup/Post"
 import AddButton from "../components/uiParts/AddButton"
+import { RootStackParamList } from "../navigation/StackNavigator";
+import { StackScreenProps } from "@react-navigation/stack";
 
 type record = {
   name: string
