@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Text, View, StyleSheet, TextInput, Image, Alert, TouchableOpacity } from "react-native"
 import BrownButton from "../components/uiParts/button"
-import { launchCamera, launchImageLibrary } from "react-native-image-picker"
 
 export default function Setting() {
   const [text, onChangeText] = React.useState<string>("名前を入力してください")

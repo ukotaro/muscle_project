@@ -12,6 +12,7 @@ import {
   FontAwesome5,
 } from "@expo/vector-icons";
 import RankingTabNavigator from "./RankingTabNavigator";
+import TimeLine from "../screens/TimeLine";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -73,7 +74,7 @@ export default function AppNavigator() {
           <BottomTab.Screen name="マイ記録" component={SecondBottomTabScreen} />
           <BottomTab.Screen
             name="タイムライン"
-            component={FirstBottomTabScreen}
+            component={TimeLine}
           />
           <BottomTab.Screen name="ランキング" component={RankingTabNavigator} />
           <BottomTab.Screen name="グループ" component={GroupList} />
