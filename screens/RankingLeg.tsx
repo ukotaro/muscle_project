@@ -6,7 +6,7 @@ import RankingWeight from "../components/uiParts/RankingWeight"
 
 type data = {}
 // Settingタブで表示される画面内容
-export default function RankingBack() {
+export default function RankingLeg() {
   const dammyData = [
     {
       rank: 1,

@@ -3,6 +3,7 @@ import { Text, View } from "react-native"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import RankingChest from "../screens/RankingChest"
 import RankingBack from "../screens/RankingBack"
+import RankingLeg from "../screens/RankingLeg"
 
 const RankingTab = createMaterialTopTabNavigator()
 
@@ -21,6 +22,7 @@ export default function RankingTabNavigator() {
       >
         <RankingTab.Screen name="胸" component={RankingChest} />
         <RankingTab.Screen name="背中" component={RankingBack} />
+        <RankingTab.Screen name="脚" component={RankingLeg} />
       </RankingTab.Navigator>
     </View>
   )

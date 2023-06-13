@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     marginBottom:8,
   },
   container :{
-    marginVertical:20
+    marginVertical:20,
+    alignItems:"center"
   }
 })
