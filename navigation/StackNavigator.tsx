@@ -27,7 +27,7 @@ export default function MyStack() {
     <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="マイ記録" component={MyPage}/>
       <Stack.Screen name="タイムライン" component={TimeLine}/>
-      {/*<Stack.Screen name="プロフィール設定" component={Setting} />*/}
+      <Stack.Screen name="プロフィール設定" component={Setting} />
       <Stack.Screen name="投稿・記録" component={EditReportPage} />
       <Stack.Screen name="投稿編集" component={PostEditPage} />
     </Stack.Navigator>

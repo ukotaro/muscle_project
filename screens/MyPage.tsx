@@ -1,11 +1,10 @@
-
-
 import * as React from "react"
 import { Text, View, FlatList, ScrollView, Button, Alert, StyleSheet } from "react-native"
 import Post from "../components/uiGroup/Post"
 import AddButton from "../components/uiParts/AddButton"
-import { RootStackParamList } from "../navigation/StackNavigator";
-import { StackScreenProps } from "@react-navigation/stack";
+import { RootStackParamList } from "../navigation/StackNavigator"
+import { StackScreenProps } from "@react-navigation/stack"
+import SettingButton from "../components/uiParts/SettingButton"
 
 type record = {
   name: string
@@ -14,7 +13,7 @@ type record = {
   profileImageUrl: string
 }
 
-export default function MyPage({navigation}: StackScreenProps<RootStackParamList, "マイ記録">) {
+export default function MyPage({ navigation }: StackScreenProps<RootStackParamList, "マイ記録">) {
   const damyData: record[] = [
     {
       bodyImageUrl:
@@ -51,11 +50,10 @@ export default function MyPage({navigation}: StackScreenProps<RootStackParamList
           />
         )}
       />
-
-      <View style={styles.buttonContainer}>
-        <AddButton
+      <View style={styles.settingButton}>
+        <SettingButton
           onPress={() => {
-            navigation.navigate("投稿・記録");
+            navigation.navigate("プロフィール設定")
           }}
         />
       </View>
@@ -68,5 +66,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 10,
     right: 10,
+  },
+  settingButton: {
+    position: "absolute",
+    bottom: 20,
+    zIndex: 300,
+    right: 20,
   },
 })

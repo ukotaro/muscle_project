@@ -1,10 +1,10 @@
-import { StyleSheet, View, Text } from "react-native";
-import React from "react";
-import SettingButton from "./SettingButton";
+import { StyleSheet, View, Text } from "react-native"
+import React from "react"
+import SettingButton from "./SettingButton"
 
 type Props = {
-  name: string;
-};
+  name: string
+}
 
 export default function Header({ name }: Props) {
   return (
@@ -12,11 +12,8 @@ export default function Header({ name }: Props) {
       <View style={styles.leftContainer}>
         <Text style={styles.name}>{name}</Text>
       </View>
-      <View style={styles.rightContainer}>
-        <SettingButton />
-      </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -29,6 +26,8 @@ const styles = StyleSheet.create({
     borderBottomColor: "#594639",
     borderBottomWidth: 0.3,
     padding: 5,
+    zIndex: -50,
+    position:"relative"
   },
   leftContainer: {
     flex: 1,
@@ -49,4 +48,4 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: "#594639",
   },
-});
+})
