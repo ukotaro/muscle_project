@@ -1,6 +1,7 @@
 import * as React from "react"
-import { Text, View, FlatList } from "react-native"
+import { Text, View, FlatList, Button, StyleSheet } from "react-native"
 import Post from "../components/uiGroup/Post"
+import AddButton from "../components/uiParts/AddButton"
 
 type record = {
   name: string
@@ -47,6 +48,21 @@ export default function TimeLine() {
           />
         )}
       />
+      <View style={styles.buttonContainer}>
+        <AddButton
+          onPress={() => {
+            return <></>
+          }}
+        />
+      </View>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    position: "absolute",
+    bottom: 10,
+    right: 10,
+  },
+})
