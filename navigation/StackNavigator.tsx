@@ -12,13 +12,15 @@ import EditReportPage from "../screens/EditReportPage";
 import PostEditPage from "../screens/PostEditPage";
 import MyPage from "../screens/MyPage";
 import TimeLine from "../screens/TimeLine";
+import FinalCheck from "../screens/FinalCheck";
 
 export type RootStackParamList = {
   マイ記録: undefined;
   プロフィール設定: undefined;
   "投稿・記録": undefined;
   投稿編集: undefined;
-  "タイムライン":undefined
+  "タイムライン":undefined;
+  "最終確認":undefined
 };
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -30,6 +32,7 @@ export default function MyStack() {
       <Stack.Screen name="プロフィール設定" component={Setting} />
       <Stack.Screen name="投稿・記録" component={EditReportPage} />
       <Stack.Screen name="投稿編集" component={PostEditPage} />
+      <Stack.Screen name="最終確認" component={FinalCheck} />
     </Stack.Navigator>
   );
 }

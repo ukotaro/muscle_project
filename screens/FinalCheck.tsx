@@ -4,8 +4,11 @@ import BrownButton from "../components/uiParts/button"
 import { RootStackParamList } from "../navigation/StackNavigator"
 import { StackScreenProps } from "@react-navigation/stack"
 import PostEdit from "../components/uiGroup/PostEdit"
+import Board from "../components/uiParts/Board"
+import NameRecord from "../components/uiParts/NameRecord"
+import Post from "../components/uiGroup/Post"
 
-export default function PostEditPage({
+export default function FinalCheck({
   navigation,
 }: StackScreenProps<RootStackParamList, "投稿編集">) {
   return (
@@ -13,11 +16,16 @@ export default function PostEditPage({
       style={{
         flex: 1,
         justifyContent: "center",
-        alignItems: "center",
+        alignItems:"center",
         backgroundColor: "#F8F4E6",
       }}
     >
-      <PostEdit eventId={1} />
+      <Post
+        name="範馬刃牙"
+        profileImageUrl="https://blog-imgs-93.fc2.com/n/w/1/nw11/20150619_uchimurateruyoshi_32.jpg"
+        record="ベンチプレス 500kg 30000回"
+        bodyImageUrl="https://newsatcl-pctr.c.yimg.jp/t/amd-img/20230408-00010000-vitup-000-1-view.jpg?pri=l&w=521&h=640&exp=10800"
+      />
       <View style={styles.flex}>
         <View style={styles.box}>
           <BrownButton
@@ -29,9 +37,9 @@ export default function PostEditPage({
         </View>
         <View style={styles.box}>
           <BrownButton
-            title="撮影する"
+            title="投稿する"
             onPress={() => {
-              navigation.navigate("最終確認")
+              navigation.navigate("タイムライン")
             }}
           ></BrownButton>
         </View>
@@ -39,12 +47,13 @@ export default function PostEditPage({
     </View>
   )
 }
+
 const styles = StyleSheet.create({
   flex: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom:30,
-    width:280
+    marginBottom: 30,
+    width: 300,
   },
   box: {
     width: 120,
