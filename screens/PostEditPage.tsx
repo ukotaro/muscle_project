@@ -4,15 +4,15 @@ import BrownButton from "../components/uiParts/button";
 import { RootStackParamList } from "../navigation/StackNavigator";
 import { StackScreenProps } from "@react-navigation/stack";
 
-export default function SecondBottomTabScreen({
+export default function PostEditPage({
   navigation,
-}: StackScreenProps<RootStackParamList, "マイ記録">) {
+}: StackScreenProps<RootStackParamList, "投稿編集">) {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <BrownButton
-        title="編集"
+        title="投稿編集ページです"
         onPress={() => {
-          navigation.navigate("投稿・記録");
+          navigation.goBack();
         }}
       ></BrownButton>
     </View>
