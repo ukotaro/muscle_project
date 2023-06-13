@@ -1,11 +1,15 @@
 import { StyleSheet, View, Text } from "react-native";
 import React from "react";
-
+import { RootStackParamList } from "../../navigation/StackNavigator";
+import { StackScreenProps } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 type Props = {
-  onPress: () => {};
+  onPress: () => void,
 };
+type addProps = Props | StackScreenProps<RootStackParamList>
+
+
 const AddButton = ({ onPress }: Props) => {
   return (
     <View style={styles.iconContainer}>

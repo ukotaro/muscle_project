@@ -1,18 +1,18 @@
-import BrownButton from "../uiParts/button";
-import Board from "../uiParts/Board";
-import EventImage from "../uiParts/EventImage";
-import { StyleSheet, View, Text, Button, Image, Alert } from "react-native";
-import React, { useEffect, useState } from "react";
-import NumberInput from "../uiParts/NumberInput";
+import BrownButton from "../uiParts/button"
+import Board from "../uiParts/Board"
+import EventImage from "../uiParts/EventImage"
+import { StyleSheet, View, Text, Button, Image, Alert } from "react-native"
+import React, { useEffect, useState } from "react"
+import NumberInput from "../uiParts/NumberInput"
 
 type Props = {
-  eventId: number;
-};
+  eventId: number
+}
 
 export default function PostEdit({ eventId }: Props) {
-  const [weight, setWeight] = useState<number>();
-  const [time, setTime] = useState<number>();
-  const [timeSet, setTimeSet] = useState<number>();
+  const [weight, setWeight] = useState<number>()
+  const [time, setTime] = useState<number>()
+  const [timeSet, setTimeSet] = useState<number>()
 
   return eventId === 0 ? (
     <View style={styles.container}>
@@ -83,7 +83,7 @@ export default function PostEdit({ eventId }: Props) {
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -115,4 +115,4 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-around",
   },
-});
+})

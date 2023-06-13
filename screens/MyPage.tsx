@@ -14,7 +14,7 @@ type record = {
   profileImageUrl: string
 }
 
-export default function MyPage() {
+export default function MyPage({navigation}: StackScreenProps<RootStackParamList, "マイ記録">) {
   const damyData: record[] = [
     {
       bodyImageUrl:
@@ -55,7 +55,7 @@ export default function MyPage() {
       <View style={styles.buttonContainer}>
         <AddButton
           onPress={() => {
-            return <></>
+            navigation.navigate("投稿・記録");
           }}
         />
       </View>

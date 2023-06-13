@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     backgroundColor: "#F8F4E6",
     borderBottomColor: "#594639",
-    borderBottomWidth: 0.2,
+    borderBottomWidth: 0.3,
     padding: 5,
   },
   leftContainer: {

@@ -6,9 +6,10 @@ import React, { useEffect, useState } from "react";
 
 type Props = {
   eventId: number;
+  onPress:()=>void
 };
 
-export default function PostEditEvent({ eventId }: Props) {
+export default function PostEditEvent({ eventId ,onPress}: Props) {
   return (
     <Board>
       <View style={styles.container}>
@@ -18,9 +19,7 @@ export default function PostEditEvent({ eventId }: Props) {
         <View style={styles.button}>
           <BrownButton
             title="編集する"
-            onPress={() => {
-              Alert.alert("ヤーーー！！！！！");
-            }}
+            onPress={onPress}
           ></BrownButton>
         </View>
       </View>
@@ -31,19 +30,17 @@ export default function PostEditEvent({ eventId }: Props) {
 const styles = StyleSheet.create({
   title: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
   },
   container: {
     flexDirection: "column",
     height: 150,
+    justifyContent:"center",
+    alignItems:"center"
   },
   button: {
     width: 150,
     justifyContent: "center",
-  },
-  image: {
-    height: 200,
-    width: 160,
-    borderRadius: 10,
+    marginTop:16
   },
 });

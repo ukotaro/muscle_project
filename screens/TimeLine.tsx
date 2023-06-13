@@ -2,6 +2,8 @@ import * as React from "react"
 import { Text, View, FlatList, Button, StyleSheet } from "react-native"
 import Post from "../components/uiGroup/Post"
 import AddButton from "../components/uiParts/AddButton"
+import { RootStackParamList } from "../navigation/StackNavigator"
+import { StackScreenProps } from "@react-navigation/stack"
 
 type record = {
   name: string
@@ -10,7 +12,9 @@ type record = {
   profileImageUrl: string
 }
 
-export default function TimeLine() {
+export default function TimeLine({
+  navigation,
+}: StackScreenProps<RootStackParamList, "タイムライン">) {
   const damyData: record[] = [
     {
       bodyImageUrl:
@@ -36,7 +40,7 @@ export default function TimeLine() {
     },
   ]
   return (
-    <View style={{ flex: 1, justifyContent: "center" ,backgroundColor: "#F8F4E6"}}>
+    <View style={{ flex: 1, justifyContent: "center", backgroundColor: "#F8F4E6" }}>
       <FlatList
         data={damyData}
         renderItem={({ item }) => (
@@ -51,7 +55,7 @@ export default function TimeLine() {
       <View style={styles.buttonContainer}>
         <AddButton
           onPress={() => {
-            return <></>
+            navigation.navigate("投稿・記録")
           }}
         />
       </View>
