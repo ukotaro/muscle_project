@@ -12,6 +12,7 @@ import {
   FontAwesome5,
 } from "@expo/vector-icons";
 import RankingTabNavigator from "./RankingTabNavigator";
+import MyStack from "./StackNavigator";
 import TimeLine from "../screens/TimeLine";
 import MyPage from "../screens/MyPage";
 
@@ -72,7 +73,7 @@ export default function AppNavigator() {
             style: { height: 80, backgroundColor: "#F8F4E6" },
           }}
         >
-          <BottomTab.Screen name="マイ記録" component={MyPage} />
+          <BottomTab.Screen name="マイ記録" component={MyStack} />
           <BottomTab.Screen
             name="タイムライン"
             component={TimeLine}

@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { Text, View, FlatList } from "react-native"
 import { NavigationContainer } from "@react-navigation/native"
@@ -42,4 +43,5 @@ export default function RankingLeg() {
       />
     </View>
   )
+
 }
