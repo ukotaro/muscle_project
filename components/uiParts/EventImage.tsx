@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F8F4E6",
-    alignItems: "flex-start",
-    justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "space-around",
     fontColor: "#594639",
     flexDirection: "row",
   },
@@ -49,7 +49,5 @@ const styles = StyleSheet.create({
   textContainer: {
     fontSize: 26,
     color: "#594639",
-    marginLeft: 10,
-    marginTop: 10,
   },
 });
