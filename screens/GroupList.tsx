@@ -33,7 +33,7 @@ export default function GroupList() {
     },
   ]
   return (
-    <>
+    <View style={{backgroundColor: "#F8F4E6",flex:1}}>
       <View style={styles.serch}>
         <TextInput style={styles.input} onChangeText={onChangeText} value={text}/>
         <View style={styles.button}>
@@ -52,7 +52,7 @@ export default function GroupList() {
           <Team title={item.title} uri={item.uri} detail={item.detail} member={item.member} />
         )}
       />
-    </>
+    </View>
   )
 }
 
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 40,
-    marginTop: 60,
+    marginTop: 20,
     marginHorizontal: 12,
     justifyContent: "space-around",
     marginBottom:12

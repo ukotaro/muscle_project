@@ -1,7 +1,7 @@
 
 
 import * as React from "react"
-import { Text, View, FlatList, ScrollView, Button, Alert ,StyleSheet} from "react-native"
+import { Text, View, FlatList, ScrollView, Button, Alert, StyleSheet } from "react-native"
 import Post from "../components/uiGroup/Post"
 import AddButton from "../components/uiParts/AddButton"
 import { RootStackParamList } from "../navigation/StackNavigator";
@@ -39,20 +39,19 @@ export default function MyPage() {
     },
   ]
   return (
-    <View style={{ flex: 1, justifyContent: "center" }}>
-      <ScrollView>
-        <FlatList
-          data={damyData}
-          renderItem={({ item }) => (
-            <Post
-              name={item.name}
-              record={item.record}
-              bodyImageUrl={item.bodyImageUrl}
-              profileImageUrl={item.profileImageUrl}
-            />
-          )}
-        />
-      </ScrollView>
+    <View style={{ flex: 1, justifyContent: "center", backgroundColor: "#F8F4E6" }}>
+      <FlatList
+        data={damyData}
+        renderItem={({ item }) => (
+          <Post
+            name={item.name}
+            record={item.record}
+            bodyImageUrl={item.bodyImageUrl}
+            profileImageUrl={item.profileImageUrl}
+          />
+        )}
+      />
+
       <View style={styles.buttonContainer}>
         <AddButton
           onPress={() => {
@@ -64,11 +63,10 @@ export default function MyPage() {
   )
 }
 
-
 const styles = StyleSheet.create({
   buttonContainer: {
-    position:"absolute",
-    bottom:10,
-    right:10
+    position: "absolute",
+    bottom: 10,
+    right: 10,
   },
 })
