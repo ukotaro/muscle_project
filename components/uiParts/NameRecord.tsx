@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
     textAlign: "left",
+    marginBottom:3
   },
   record: {
     fontSize: 15,

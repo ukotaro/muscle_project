@@ -14,6 +14,7 @@ import { RootStackParamList } from "../navigation/StackNavigator";
 import { StackScreenProps } from "@react-navigation/stack";
 // import { launchCamera, launchImageLibrary } from "react-native-image-picker"
 
+
 export default function Setting({
   navigation,
 }: StackScreenProps<RootStackParamList, "プロフィール設定">) {

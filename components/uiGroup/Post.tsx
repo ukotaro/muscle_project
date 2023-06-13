@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontColor: "#594639",
     width: "100%",
+    marginVertical:20
   },
   profileContainer: {
     flexDirection: "row",
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginRight: "5%",
     alignSelf: "flex-end",
+    borderRadius:20
   },
   nameRecordContainer: {
     marginLeft: 20,

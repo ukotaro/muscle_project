@@ -13,6 +13,8 @@ import {
 } from "@expo/vector-icons";
 import RankingTabNavigator from "./RankingTabNavigator";
 import MyStack from "./StackNavigator";
+import TimeLine from "../screens/TimeLine";
+import MyPage from "../screens/MyPage";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -74,7 +76,7 @@ export default function AppNavigator() {
           <BottomTab.Screen name="マイ記録" component={MyStack} />
           <BottomTab.Screen
             name="タイムライン"
-            component={FirstBottomTabScreen}
+            component={TimeLine}
           />
           <BottomTab.Screen name="ランキング" component={RankingTabNavigator} />
           <BottomTab.Screen name="グループ" component={GroupList} />
