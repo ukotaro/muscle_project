@@ -14,7 +14,7 @@ export const createPost = async (user_id: number, comment: string, training_id?:
         comment: comment
     }
     formData.append('post_info', JSON.stringify(post_info));
-    formData.append('image', imageFile);
+    formData.append('post_image', imageFile);
 
     try {
         const res = await axios.post<{ message: string, data: Post }>(`/post`, formData);
