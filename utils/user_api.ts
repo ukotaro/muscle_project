@@ -16,7 +16,7 @@ export const createUser = async (name: string, email: string, password: string, 
         training_group_id: training_group_id
     }
     formData.append('user_info', JSON.stringify(user_info));
-    formData.append('image', imageFile);
+    formData.append('user_image', imageFile);
     
     try {
         const res = await axios.post<{ message: string, data: User }>('/user', formData);
@@ -27,10 +27,12 @@ export const createUser = async (name: string, email: string, password: string, 
     }
 }
 
-//ユーザーの取得
-export const getUser = async (id: number) => {
+// ユーザーの取得
+// urlは使える状態で返ってきているはず
+// 現状ここからトレーニングや投稿にはアクセスできない
+export const getUser = async (user_id: number) => {
     try {
-        const res = await axios.get<{ message: string, data: User }>(`/user/${id}`);
+        const res = await axios.get<{ message: string, data: User }>(`/user/${user_id}`);
         return res.data.data;
     } catch (err) {
         console.log(err);
@@ -39,9 +41,10 @@ export const getUser = async (id: number) => {
 }
 
 //ユーザーの複数取得
-export const getUsers = async (ids: number[]) => {
+//画像は取得できない
+export const getUsers = async (user_ids: number[]) => {
     try {
-        const res = await axios.get<{ message: string, data: User[] }>(`/users/?id=${ids.join('?id=')}`);
+        const res = await axios.get<{ message: string, data: User[] }>(`/users?id=${user_ids.join('&id=')}`);
         return res.data.data;
     } catch (err) {
         console.log(err);
@@ -50,19 +53,19 @@ export const getUsers = async (ids: number[]) => {
 }
 
 //ユーザーの更新
-export const updateUser = async (id: number, name?: string, email?: string, training_group_id?: number, imageFile?: Blob) => {
+export const updateUser = async (user_id: number, name?: string, email?: string, training_group_id?: number, imageFile?: Blob) => {
     const formData = new FormData();
-    let user_info: User = { name: name ? name : undefined, email: email ? email : undefined, training_group_id: training_group_id ? training_group_id : undefined }
+    let user_info: User = { name: name, email: email, training_group_id: training_group_id }
     formData.append('user_info', JSON.stringify(user_info));
 
     if (imageFile) {
-        formData.append('image', imageFile);
+        formData.append('user_image', imageFile);
     } else {
-        formData.append('image', undefined);
+        formData.append('user_image', undefined);
     }
 
     try {
-        const res = await axios.put<{ message: string, data: User }>(`/user/${id}`, formData);
+        const res = await axios.put<{ message: string, data: User }>(`/user/${user_id}`, formData);
         return res.data.data;
     } catch (err) {
         console.log(err);
