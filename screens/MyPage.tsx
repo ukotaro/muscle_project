@@ -5,6 +5,7 @@ import AddButton from "../components/uiParts/AddButton"
 import { RootStackParamList } from "../navigation/StackNavigator"
 import { StackScreenProps } from "@react-navigation/stack"
 import SettingButton from "../components/uiParts/SettingButton"
+import { getUser } from "../utils/user_api"
 
 type record = {
   name: string
@@ -14,6 +15,19 @@ type record = {
 }
 
 export default function MyPage({ navigation }: StackScreenProps<RootStackParamList, "マイ記録">) {
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const user = await getUser(1)
+        console.log(user)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchData()
+  }, [])
+
   const damyData: record[] = [
     {
       bodyImageUrl:
@@ -39,6 +53,7 @@ export default function MyPage({ navigation }: StackScreenProps<RootStackParamLi
   ]
   return (
     <View style={{ flex: 1, justifyContent: "center", backgroundColor: "#F8F4E6" }}>
+      <View></View>
       <FlatList
         data={damyData}
         renderItem={({ item }) => (

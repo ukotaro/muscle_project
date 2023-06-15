@@ -3,6 +3,7 @@ import { StyleSheet, TextInput, FlatList, View, Alert, Button } from "react-nati
 import React, { useEffect, useState } from "react"
 import Team from "../components/uiGroup/team"
 import BrownButton from "../components/uiParts/button"
+import { getGroupPosts } from "../utils/group_api"
 
 type teamProps = {
   title: string
@@ -10,6 +11,9 @@ type teamProps = {
   member: number
   detail: string
 }
+
+
+
 export default function GroupList() {
   const [text, onChangeText] = React.useState<string>("チームを検索してください")
   const damyData: teamProps[] = [
