@@ -4,6 +4,9 @@ import axios from 'axios';
 import { User } from '../type';
 
 
+const api = axios.create({
+    baseURL: "http://localhost:8020",
+})
 // ユーザーの作成
 // 名前、メールアドレス、パスワードは必須、トレーニンググループと画像ファイルは任意
 // トレーニンググループを指定しないと、自動的にグループ1に配属される
@@ -19,7 +22,7 @@ export const createUser = async (name: string, email: string, password: string, 
     formData.append('user_image', imageFile);
     
     try {
-        const res = await axios.post<{ message: string, data: User }>('/user', formData);
+        const res = await api.post<{ message: string, data: User }>('/user', formData);
         return res.data.data;
     } catch (err) {
         console.log(err);
@@ -32,7 +35,7 @@ export const createUser = async (name: string, email: string, password: string, 
 // 現状ここからトレーニングや投稿にはアクセスできない
 export const getUser = async (user_id: number) => {
     try {
-        const res = await axios.get<{ message: string, data: User }>(`/user/${user_id}`);
+        const res = await api.get<{ message: string, data: User }>(`/user/${user_id}`);
         return res.data.data;
     } catch (err) {
         console.log(err);
@@ -44,7 +47,7 @@ export const getUser = async (user_id: number) => {
 //画像は取得できない
 export const getUsers = async (user_ids: number[]) => {
     try {
-        const res = await axios.get<{ message: string, data: User[] }>(`/users?id=${user_ids.join('&id=')}`);
+        const res = await api.get<{ message: string, data: User[] }>(`/users?id=${user_ids.join('&id=')}`);
         return res.data.data;
     } catch (err) {
         console.log(err);
@@ -65,10 +68,13 @@ export const updateUser = async (user_id: number, name?: string, email?: string,
     }
 
     try {
-        const res = await axios.put<{ message: string, data: User }>(`/user/${user_id}`, formData);
+        const res = await api.put<{ message: string, data: User }>(`/user/${user_id}`, formData);
         return res.data.data;
     } catch (err) {
         console.log(err);
         return "api error"
     }
 }
+
+
+console.log(getUser(1));
