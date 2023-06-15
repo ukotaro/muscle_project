@@ -43,9 +43,9 @@ export const getUserTrainings = async (user_id: number) => {
 }
 
 // ユーザーの一ヶ月の総重量を取得
-export const getTotalWeight = async (userId: number) => {
+export const getTotalWeight = async (userId: number, menu_id: number) => {
     try {
-        const res = await axios.get<{ message: string, data: number }>(`/user/total_weight/${userId}`);
+        const res = await axios.get<{ message: string, data: number }>(`/user/total_weight/${userId}?menu_id=${menu_id}`);
         return res.data.data;
     } catch (err) {
         console.log(err);
