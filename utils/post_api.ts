@@ -2,7 +2,7 @@ import axios from "axios";
 import { Training, Post } from "../type";
 import { exp } from "react-native-reanimated";
 const api = axios.create({
-  baseURL: "http://localhost:8020",
+  baseURL: "http://18.233.93.14:8080",
 });
 // タイムライン投稿の作成
 // トレーニングを同時に作成するには、トレーニングの情報を引数に追加する

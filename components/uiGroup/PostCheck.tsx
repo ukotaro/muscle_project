@@ -35,7 +35,7 @@ export default function PostCheck({
       </View>
       <TextInput
         style={{
-          height: 200,
+          height: 100,
           width: "90%",
           marginRight: "5%",
           marginLeft: "5%",
