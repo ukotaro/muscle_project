@@ -7,8 +7,11 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-export default function NumberInput() {
-  const [number, onChangeNumber] = React.useState("");
+type Props = {
+  number: number | undefined;
+  onChangeNumber: React.Dispatch<React.SetStateAction<number | undefined>>;
+};
+export default function NumberInput({ number, onChangeNumber }: Props) {
   //使いたい部分をTouchableで囲う必要あり
   return (
     <TouchableWithoutFeedback
@@ -19,8 +22,8 @@ export default function NumberInput() {
       <SafeAreaView>
         <TextInput
           style={styles.input}
-          onChangeText={onChangeNumber}
-          value={number}
+          onChangeText={(text) => onChangeNumber(Number(text))}
+          value={number ? number.toString() : ""}
           placeholder=""
           keyboardType="numeric"
         />
@@ -31,7 +34,7 @@ export default function NumberInput() {
 
 const styles = StyleSheet.create({
   input: {
-    width:140,
+    width: 140,
     height: 40,
     margin: 12,
     borderWidth: 1,
