@@ -7,13 +7,23 @@ import NumberInput from "../uiParts/NumberInput";
 
 type Props = {
   eventId: number;
+  weight: number | undefined;
+  setWeight: React.Dispatch<React.SetStateAction<number | undefined>>;
+  time: number | undefined;
+  setTime: React.Dispatch<React.SetStateAction<number | undefined>>;
+  timeSet: number | undefined;
+  setTimeSet: React.Dispatch<React.SetStateAction<number | undefined>>;
 };
 
-export default function PostEdit({ eventId }: Props) {
-  const [weight, setWeight] = useState<number>();
-  const [time, setTime] = useState<number>();
-  const [timeSet, setTimeSet] = useState<number>();
-
+export default function PostEdit({
+  eventId,
+  weight,
+  setWeight,
+  time,
+  setTime,
+  timeSet,
+  setTimeSet,
+}: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.title}>
