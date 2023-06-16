@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import BrownButton from "../components/uiParts/button";
 import { RootStackParamList } from "../navigation/StackNavigator";
@@ -11,6 +12,9 @@ export default function PostEditPage({
   navigation,
 }: StackScreenProps<RootStackParamList, "投稿編集">) {
   const { eventId } = route.params;
+  const [weight, setWeight] = useState<number>();
+  const [time, setTime] = useState<number>();
+  const [timeSet, setTimeSet] = useState<number>();
 
   return (
     <View
@@ -21,7 +25,15 @@ export default function PostEditPage({
         backgroundColor: "#F8F4E6",
       }}
     >
-      <PostEdit eventId={eventId} />
+      <PostEdit
+        eventId={eventId}
+        weight={weight}
+        setWeight={setWeight}
+        time={time}
+        setTime={setTime}
+        timeSet={timeSet}
+        setTimeSet={setTimeSet}
+      />
       <View style={styles.flex}>
         <View style={styles.box}>
           <BorderButton
@@ -35,7 +47,12 @@ export default function PostEditPage({
           <BrownButton
             title="撮影する"
             onPress={() => {
-              navigation.navigate("最終確認");
+              navigation.navigate("最終確認", {
+                eventId: eventId,
+                weight: weight,
+                time: time,
+                timeSet: timeSet,
+              });
             }}
           ></BrownButton>
         </View>

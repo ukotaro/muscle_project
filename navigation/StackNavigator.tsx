@@ -20,7 +20,12 @@ export type RootStackParamList = {
   "投稿・記録": undefined;
   投稿編集: { eventId: number };
   タイムライン: undefined;
-  最終確認: undefined;
+  最終確認: {
+    eventId: number;
+    weight: number | undefined;
+    time: number | undefined;
+    timeSet: number | undefined;
+  };
 };
 const Stack = createStackNavigator<RootStackParamList>();
 
