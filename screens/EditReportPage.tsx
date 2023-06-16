@@ -38,12 +38,7 @@ export default function EditReportPage({
     >
       <FlatList
         data={dammyData}
-        renderItem={({ item }) => (
-          <PostEditEvent
-            eventId={item.eventId}
-            onPress={item.onPress}
-          />
-        )}
+        renderItem={({ item }) => <PostEditEvent eventId={item.eventId} onPress={item.onPress} />}
       />
     </View>
   )

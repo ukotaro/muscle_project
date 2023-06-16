@@ -2,11 +2,13 @@
 import axios from "axios";
 import { TrainingGroup, UserTotalWeight, Post } from "../type";
 
-
+const api = axios.create({
+    baseURL: "http://localhost:8020",
+})
 //グループ一覧の取得
 export const getGroups = async () => {
     try {
-        const res = await axios.get<{ message: string, data: TrainingGroup[] }>(`/groups`);
+        const res = await api.get<{ message: string, data: TrainingGroup[] }>(`/groups`);
         return res.data.data;
     } catch (err) {
         console.log(err);
@@ -20,7 +22,7 @@ export const getGroups = async () => {
 // UserTotalWeightの配列はtotal_weightの降順でソートされている
 export const getRanking = async (id: number, menu_id: number) => {
     try {
-        const res = await axios.get<{ message: string, data: UserTotalWeight[] }>(`/groups/ranking/${id}?menu_id=${menu_id}`);
+        const res = await api.get<{ message: string, data: UserTotalWeight[] }>(`/groups/ranking/${id}?menu_id=${menu_id}`);
         return res.data.data;
     } catch (err) {
         console.log(err);
@@ -33,7 +35,7 @@ export const getRanking = async (id: number, menu_id: number) => {
 // タイムライン投稿は投稿日時の降順でソートされている
 export const getGroupPosts = async (id: number) => {
     try {
-        const res = await axios.get<{ message: string, data: Post[] }>(`/groups/posts/${id}`);
+        const res = await api.get<{ message: string, data: Post[] }>(`/groups/posts/${id}`);
         return res.data.data;
     } catch (err) {
         console.log(err);

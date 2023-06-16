@@ -7,16 +7,28 @@ import PostEdit from "../components/uiGroup/PostEdit"
 import Board from "../components/uiParts/Board"
 import NameRecord from "../components/uiParts/NameRecord"
 import Post from "../components/uiGroup/Post"
+import { createTraining } from "../utils/training_api"
+import { createPost } from "../utils/post_api"
+import { Training } from "../type"
 
 export default function FinalCheck({
   navigation,
 }: StackScreenProps<RootStackParamList, "投稿編集">) {
+  const training = { user_id: 1, menu_id: 1, weight: 100, times: 30, sets: 3 }
+  const handleButtonPress = async () => {
+    try {
+      const post = await createPost(1, "コメント", 1, training)
+      console.log(post)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <View
       style={{
         flex: 1,
         justifyContent: "center",
-        alignItems:"center",
+        alignItems: "center",
         backgroundColor: "#F8F4E6",
       }}
     >
@@ -39,6 +51,7 @@ export default function FinalCheck({
           <BrownButton
             title="投稿する"
             onPress={() => {
+              handleButtonPress()
               navigation.navigate("タイムライン")
             }}
           ></BrownButton>
