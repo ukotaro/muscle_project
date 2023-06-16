@@ -1,20 +1,20 @@
-import BrownButton from "../uiParts/button"
-import Board from "../uiParts/Board"
-import EventImage from "../uiParts/EventImage"
-import { StyleSheet, View, Text, Button, Image, Alert } from "react-native"
-import React, { useEffect, useState } from "react"
-import NumberInput from "../uiParts/NumberInput"
+import BrownButton from "../uiParts/button";
+import Board from "../uiParts/Board";
+import EventImage from "../uiParts/EventImage";
+import { StyleSheet, View, Text, Button, Image, Alert } from "react-native";
+import React, { useEffect, useState } from "react";
+import NumberInput from "../uiParts/NumberInput";
 
 type Props = {
-  eventId: number
-}
+  eventId: number;
+};
 
 export default function PostEdit({ eventId }: Props) {
-  const [weight, setWeight] = useState<number>()
-  const [time, setTime] = useState<number>()
-  const [timeSet, setTimeSet] = useState<number>()
+  const [weight, setWeight] = useState<number>();
+  const [time, setTime] = useState<number>();
+  const [timeSet, setTimeSet] = useState<number>();
 
-  return eventId === 0 ? (
+  return (
     <View style={styles.container}>
       <View style={styles.title}>
         <EventImage eventId={eventId} />
@@ -37,53 +37,7 @@ export default function PostEdit({ eventId }: Props) {
         </View>
       </View>
     </View>
-  ) : eventId === 1 ? (
-    <View style={styles.container}>
-      <View style={styles.container}>
-        <View style={styles.title}>
-          <EventImage eventId={eventId} />
-        </View>
-        <Text>重量</Text>
-        <View>
-          <NumberInput />
-          <Text>kg</Text>
-        </View>
-        <Text>回数</Text>
-        <View>
-          <NumberInput />
-          <Text>回</Text>
-        </View>
-        <Text>セット数</Text>
-        <View>
-          <NumberInput />
-          <Text>回</Text>
-        </View>
-      </View>
-    </View>
-  ) : (
-    <View style={styles.container}>
-      <View style={styles.title}>
-        <EventImage eventId={eventId} />
-      </View>
-      <View style={styles.container}>
-        <Text>重量</Text>
-        <View>
-          <NumberInput />
-          <Text>kg</Text>
-        </View>
-        <Text>回数</Text>
-        <View>
-          <NumberInput />
-          <Text>回</Text>
-        </View>
-        <Text>セット数</Text>
-        <View>
-          <NumberInput />
-          <Text>回</Text>
-        </View>
-      </View>
-    </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -115,4 +69,4 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-around",
   },
-})
+});

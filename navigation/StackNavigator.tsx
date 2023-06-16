@@ -18,17 +18,17 @@ export type RootStackParamList = {
   マイ記録: undefined;
   プロフィール設定: undefined;
   "投稿・記録": undefined;
-  投稿編集: undefined;
-  "タイムライン":undefined;
-  "最終確認":undefined
+  投稿編集: { eventId: number };
+  タイムライン: undefined;
+  最終確認: undefined;
 };
 const Stack = createStackNavigator<RootStackParamList>();
 
 export default function MyStack() {
   return (
-    <Stack.Navigator screenOptions={{headerShown:false}}>
-      <Stack.Screen name="マイ記録" component={MyPage}/>
-      <Stack.Screen name="タイムライン" component={TimeLine}/>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="マイ記録" component={MyPage} />
+      <Stack.Screen name="タイムライン" component={TimeLine} />
       <Stack.Screen name="プロフィール設定" component={Setting} />
       <Stack.Screen name="投稿・記録" component={EditReportPage} />
       <Stack.Screen name="投稿編集" component={PostEditPage} />
