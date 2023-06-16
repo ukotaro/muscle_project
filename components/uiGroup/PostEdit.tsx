@@ -1,7 +1,16 @@
 import BrownButton from "../uiParts/button";
 import Board from "../uiParts/Board";
 import EventImage from "../uiParts/EventImage";
-import { StyleSheet, View, Text, Button, Image, Alert } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  Image,
+  Alert,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import NumberInput from "../uiParts/NumberInput";
 
@@ -25,28 +34,34 @@ export default function PostEdit({
   setTimeSet,
 }: Props) {
   return (
-    <View style={styles.container}>
-      <View style={styles.title}>
-        <EventImage eventId={eventId} />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.container}>
+        <View style={styles.title}>
+          <EventImage eventId={eventId} />
+        </View>
+        <View>
+          <Text style={styles.textContainer}>重量</Text>
+          <View style={styles.title}>
+            <NumberInput number={weight} onChangeNumber={setWeight} />
+            <Text style={styles.textContainer2}>kg</Text>
+          </View>
+          <Text style={styles.textContainer}>回数</Text>
+          <View style={styles.title}>
+            <NumberInput number={time} onChangeNumber={setTime} />
+            <Text style={styles.textContainer2}>回</Text>
+          </View>
+          <Text style={styles.textContainer}>セット数</Text>
+          <View style={styles.title}>
+            <NumberInput number={timeSet} onChangeNumber={setTimeSet} />
+            <Text style={styles.textContainer2}>回</Text>
+          </View>
+        </View>
       </View>
-      <View>
-        <Text style={styles.textContainer}>重量</Text>
-        <View style={styles.title}>
-          <NumberInput number={weight} onChangeNumber={setWeight} />
-          <Text style={styles.textContainer2}>kg</Text>
-        </View>
-        <Text style={styles.textContainer}>回数</Text>
-        <View style={styles.title}>
-          <NumberInput number={time} onChangeNumber={setTime} />
-          <Text style={styles.textContainer2}>回</Text>
-        </View>
-        <Text style={styles.textContainer}>セット数</Text>
-        <View style={styles.title}>
-          <NumberInput number={timeSet} onChangeNumber={setTimeSet} />
-          <Text style={styles.textContainer2}>回</Text>
-        </View>
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
