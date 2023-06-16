@@ -28,7 +28,6 @@ export default function RankingWeight({ rank, name, weight, uri }: Props) {
         setRanking(3)
       }
     }
-    console.log()
   }, [])
   useEffect(() => {
     if (ranking == 1) {
@@ -38,15 +37,21 @@ export default function RankingWeight({ rank, name, weight, uri }: Props) {
     } else if (ranking == 3) {
       setUrl(crown[3])
     }
-  }, [])
+  }, [ranking])
 
   return (
     <View style={styles.container}>
       <View>
-        {isCrown ? <Image source={{ uri: url }}></Image> : <View></View>}
+        <View style={{flexDirection:"row"}}>
+        {isCrown ? (
+          <Image source={{ uri: url }} style={{ width: 30, height: 20,marginRight:10,marginTop:5 }}></Image>
+        ) : (
+          <View></View>
+        )}
         <Text style={styles.title}>
           {rank}位　{name}
         </Text>
+        </View>
         <View style={styles.flex}>
           <Text style={styles.weight2}>総重量</Text>
           <Text style={styles.weight}>{weight} kg</Text>
