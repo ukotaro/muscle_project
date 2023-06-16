@@ -1,17 +1,17 @@
-import { StatusBar } from "expo-status-bar"
-import { StyleSheet, View, Text, Button } from "react-native"
-import React, { useEffect, useState } from "react"
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View, Text, Button } from "react-native";
+import React, { useEffect, useState } from "react";
 
 type Props = {
-  title: string
-  onPress: ()=>void
-}
+  title: string;
+  onPress: () => void;
+};
 export default function BrownButton({ title, onPress }: Props) {
   return (
     <View style={styles.square}>
       <Button title={title} color="#F8F4E6" onPress={onPress} />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: "#594639",
   },
-})
+});
