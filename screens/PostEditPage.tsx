@@ -5,6 +5,7 @@ import BrownButton from "../components/uiParts/button";
 import { RootStackParamList } from "../navigation/StackNavigator";
 import { StackScreenProps } from "@react-navigation/stack";
 import PostEdit from "../components/uiGroup/PostEdit";
+import BorderButton from "../components/uiParts/BorderButton";
 
 export default function PostEditPage({
   route,
@@ -35,12 +36,12 @@ export default function PostEditPage({
       />
       <View style={styles.flex}>
         <View style={styles.box}>
-          <BrownButton
+          <BorderButton
             title="戻る"
             onPress={() => {
               navigation.goBack();
             }}
-          ></BrownButton>
+          ></BorderButton>
         </View>
         <View style={styles.box}>
           <BrownButton
