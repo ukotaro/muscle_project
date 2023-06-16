@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
   flex: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom:30,
-    width:280
+    marginBottom: 30,
+    width: 280,
   },
   box: {
     width: 120,

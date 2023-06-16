@@ -1,19 +1,33 @@
-import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import BrownButton from "../components/uiParts/button";
-import { RootStackParamList } from "../navigation/StackNavigator";
-import { StackScreenProps } from "@react-navigation/stack";
-import PostEdit from "../components/uiGroup/PostEdit";
-import Board from "../components/uiParts/Board";
-import NameRecord from "../components/uiParts/NameRecord";
-import Post from "../components/uiGroup/Post";
+import * as React from "react"
+import { Text, View, StyleSheet } from "react-native"
+import BrownButton from "../components/uiParts/button"
+import { RootStackParamList } from "../navigation/StackNavigator"
+import { StackScreenProps } from "@react-navigation/stack"
+import PostEdit from "../components/uiGroup/PostEdit"
+import Board from "../components/uiParts/Board"
+import NameRecord from "../components/uiParts/NameRecord"
+import Post from "../components/uiGroup/Post"
 import PostCheck from "../components/uiGroup/PostCheck";
 import BorderButton from "../components/uiParts/BorderButton";
 import { useState } from "react";
+import { createTraining } from "../utils/training_api"
+import { createPost } from "../utils/post_api"
+import { Training } from "../type"
+
 export default function FinalCheck({
   navigation,
 }: StackScreenProps<RootStackParamList, "投稿編集">) {
+  const training = { user_id: 1, menu_id: 1, weight: 100, times: 30, sets: 3 }
+  const handleButtonPress = async () => {
+    try {
+      const post = await createPost(1, "コメント", 1, training)
+      console.log(post)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const [comment, setComment] = useState<string>("");
+
   return (
     <View
       style={{
@@ -36,7 +50,8 @@ export default function FinalCheck({
           <BrownButton
             title="投稿する"
             onPress={() => {
-              navigation.navigate("タイムライン");
+              handleButtonPress()
+              navigation.navigate("タイムライン")
             }}
           ></BrownButton>
         </View>

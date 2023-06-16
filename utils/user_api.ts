@@ -77,4 +77,3 @@ export const updateUser = async (user_id: number, name?: string, email?: string,
 }
 
 
-console.log(getUser(1));
