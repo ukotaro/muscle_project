@@ -1,13 +1,11 @@
-import BrownButton from "../uiParts/button"
-import Board from "../uiParts/Board"
-import EventImage from "../uiParts/EventImage"
-import { StyleSheet, View, Text, Button, Image, Alert } from "react-native"
-import React, { useEffect, useState } from "react"
-import NumberInput from "../uiParts/NumberInput"
+import BrownButton from "../uiParts/button";
+import Board from "../uiParts/Board";
+import EventImage from "../uiParts/EventImage";
+import { StyleSheet, View, Text, Button, Image, Alert } from "react-native";
+import React, { useEffect, useState } from "react";
+import NumberInput from "../uiParts/NumberInput";
 
 type Props = {
-
-  
   eventId: number;
   weight: number | undefined;
   setWeight: React.Dispatch<React.SetStateAction<number | undefined>>;
@@ -34,22 +32,22 @@ export default function PostEdit({
       <View>
         <Text style={styles.textContainer}>重量</Text>
         <View style={styles.title}>
-          <NumberInput />
+          <NumberInput number={weight} onChangeNumber={setWeight} />
           <Text style={styles.textContainer2}>kg</Text>
         </View>
         <Text style={styles.textContainer}>回数</Text>
         <View style={styles.title}>
-          <NumberInput />
+          <NumberInput number={time} onChangeNumber={setTime} />
           <Text style={styles.textContainer2}>回</Text>
         </View>
         <Text style={styles.textContainer}>セット数</Text>
         <View style={styles.title}>
-          <NumberInput />
+          <NumberInput number={timeSet} onChangeNumber={setTimeSet} />
           <Text style={styles.textContainer2}>回</Text>
         </View>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -69,9 +67,9 @@ const styles = StyleSheet.create({
   textContainer2: {
     fontSize: 20,
     color: "#594639",
-    marginTop:25
+    marginTop: 25,
   },
   title: {
     flexDirection: "row",
   },
-})
+});
