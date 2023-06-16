@@ -1,14 +1,17 @@
-import * as React from "react"
-import { Text, View, StyleSheet } from "react-native"
-import BrownButton from "../components/uiParts/button"
-import { RootStackParamList } from "../navigation/StackNavigator"
-import { StackScreenProps } from "@react-navigation/stack"
-import PostEdit from "../components/uiGroup/PostEdit"
-import BorderButton from "../components/uiParts/BorderButton"
+import * as React from "react";
+import { Text, View, StyleSheet } from "react-native";
+import BrownButton from "../components/uiParts/button";
+import { RootStackParamList } from "../navigation/StackNavigator";
+import { StackScreenProps } from "@react-navigation/stack";
+import PostEdit from "../components/uiGroup/PostEdit";
+import BorderButton from "../components/uiParts/BorderButton";
 
 export default function PostEditPage({
+  route,
   navigation,
 }: StackScreenProps<RootStackParamList, "投稿編集">) {
+  const { eventId } = route.params;
+
   return (
     <View
       style={{
@@ -18,13 +21,13 @@ export default function PostEditPage({
         backgroundColor: "#F8F4E6",
       }}
     >
-      <PostEdit eventId={1} />
+      <PostEdit eventId={eventId} />
       <View style={styles.flex}>
         <View style={styles.box}>
           <BorderButton
             title="戻る"
             onPress={() => {
-              navigation.goBack()
+              navigation.goBack();
             }}
           ></BorderButton>
         </View>
@@ -32,13 +35,13 @@ export default function PostEditPage({
           <BrownButton
             title="撮影する"
             onPress={() => {
-              navigation.navigate("最終確認")
+              navigation.navigate("最終確認");
             }}
           ></BrownButton>
         </View>
       </View>
     </View>
-  )
+  );
 }
 const styles = StyleSheet.create({
   flex: {
@@ -50,4 +53,4 @@ const styles = StyleSheet.create({
   box: {
     width: 120,
   },
-})
+});

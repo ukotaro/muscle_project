@@ -14,7 +14,7 @@ export default function PostEdit({ eventId }: Props) {
   const [time, setTime] = useState<number>()
   const [timeSet, setTimeSet] = useState<number>()
 
-  return eventId === 0 ? (
+  return (
     <View style={styles.container}>
       <View style={styles.title}>
         <EventImage eventId={eventId} />
@@ -37,52 +37,6 @@ export default function PostEdit({ eventId }: Props) {
         </View>
       </View>
     </View>
-  ) : eventId === 1 ? (
-    <View style={styles.container}>
-      <View style={styles.container}>
-        <View style={styles.title}>
-          <EventImage eventId={eventId} />
-        </View>
-        <Text>重量</Text>
-        <View>
-          <NumberInput />
-          <Text>kg</Text>
-        </View>
-        <Text>回数</Text>
-        <View>
-          <NumberInput />
-          <Text>回</Text>
-        </View>
-        <Text>セット数</Text>
-        <View>
-          <NumberInput />
-          <Text>回</Text>
-        </View>
-      </View>
-    </View>
-  ) : (
-    <View style={styles.container}>
-      <View style={styles.title}>
-        <EventImage eventId={eventId} />
-      </View>
-      <View style={styles.container}>
-        <Text>重量</Text>
-        <View>
-          <NumberInput />
-          <Text>kg</Text>
-        </View>
-        <Text>回数</Text>
-        <View>
-          <NumberInput />
-          <Text>回</Text>
-        </View>
-        <Text>セット数</Text>
-        <View>
-          <NumberInput />
-          <Text>回</Text>
-        </View>
-      </View>
-    </View>
   )
 }
 
@@ -96,14 +50,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   textContainer: {
-    fontSize: 26,
+    fontSize: 22,
     color: "#594639",
     marginLeft: 10,
+  },
+  textContainer2: {
+    fontSize: 20,
+    color: "#594639",
+    marginTop:25
   },
   title: {
     flexDirection: "row",
   },
-  textContainer2 :{
-    
-  }
 })
