@@ -13,21 +13,25 @@ export default function Setting({
   navigation,
 }: StackScreenProps<RootStackParamList, "プロフィール設定">) {
   const [text, onChangeText] = React.useState<string>("名前を入力してください")
+  const [userId, setUserId] = React.useState<number>(1)
+  const [userGroupId, setUserGroupId] = React.useState<number>(1)
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const user = await getUser(1).then((res) => console.log(res))
+        const user = await getUser(1)
         console.log(user)
+        onChangeText(user.name)
+        setUserId(user.id)
+        setUserGroupId(user.training_group.id)
       } catch (error) {
         console.log(error)
       }
     }
-
     fetchData()
   }, [])
   const handleUpdateUser = async () => {
     try {
-      const updatedUser = await updateUser(1, "John Doe", "john@example.com", 1) // 必要な引数を適切に指定してください
+      const updatedUser = await updateUser(userId, text, "jofafan@example.com", userGroupId) 
       console.log(updatedUser)
     } catch (error) {
       console.log(error)
