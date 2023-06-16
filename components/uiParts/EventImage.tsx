@@ -6,7 +6,7 @@ type Props = {
 };
 
 export default function EventImage({ eventId }: Props) {
-  return eventId === 0 ? (
+  return eventId === 1 ? (
     <View style={styles.container}>
       <Image
         style={styles.imageContainer}
@@ -14,7 +14,7 @@ export default function EventImage({ eventId }: Props) {
       />
       <Text style={styles.textContainer}>ベンチプレス</Text>
     </View>
-  ) : eventId === 1 ? (
+  ) : eventId === 2 ? (
     <View style={styles.container}>
       <Image
         style={styles.imageContainer}
