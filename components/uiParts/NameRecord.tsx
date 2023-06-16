@@ -23,15 +23,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#F8F4E6",
     alignItems: "flex-start",
     justifyContent: "center",
-    fontColor: "#594639",
   },
   name: {
+    color: "#594639",
     fontSize: 15,
     fontWeight: "bold",
     textAlign: "left",
-    marginBottom:3
+    marginBottom: 3,
   },
   record: {
+    color: "#594639",
     fontSize: 15,
     textAlign: "left",
   },
