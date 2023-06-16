@@ -4,6 +4,7 @@ import Post from "../components/uiGroup/Post"
 import AddButton from "../components/uiParts/AddButton"
 import { RootStackParamList } from "../navigation/StackNavigator"
 import { StackScreenProps } from "@react-navigation/stack"
+import { getGroupPosts } from "../utils/group_api"
 
 type record = {
   name: string
@@ -15,6 +16,18 @@ type record = {
 export default function TimeLine({
   navigation,
 }: StackScreenProps<RootStackParamList, "タイムライン">) {
+  React.useEffect(() => {
+    const fetchGroupPosts = async () => {
+      try {
+        const groups = await getGroupPosts(1)
+        console.log(groups)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchGroupPosts()
+  }, [])
   const damyData: record[] = [
     {
       bodyImageUrl:

@@ -3,10 +3,22 @@ import { Text, View, FlatList } from "react-native"
 import { NavigationContainer } from "@react-navigation/native"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import RankingWeight from "../components/uiParts/RankingWeight"
+import { getGroupPosts } from "../utils/group_api"
 
-type data = {}
 // Settingタブで表示される画面内容
 export default function RankingBack() {
+  React.useEffect(() => {
+    const fetchGroupPosts = async () => {
+      try {
+        const groups = await getGroupPosts(3)
+        console.log(groups)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchGroupPosts()
+  }, [])
   const dammyData = [
     {
       rank: 1,

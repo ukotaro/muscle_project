@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import Team from "../components/uiGroup/team"
 import BrownButton from "../components/uiParts/button"
 import { getGroupPosts } from "../utils/group_api"
+import { getGroups } from "../utils/group_api"
 
 type teamProps = {
   title: string
@@ -11,8 +12,6 @@ type teamProps = {
   member: number
   detail: string
 }
-
-
 
 export default function GroupList() {
   const [text, onChangeText] = React.useState<string>("チームを検索してください")
@@ -36,10 +35,22 @@ export default function GroupList() {
       member: 4,
     },
   ]
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const groups = await getGroups()
+        console.log(groups)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    fetchData()
+  }, [])
   return (
-    <View style={{backgroundColor: "#F8F4E6",flex:1}}>
+    <View style={{ backgroundColor: "#F8F4E6", flex: 1 }}>
       <View style={styles.serch}>
-        <TextInput style={styles.input} onChangeText={onChangeText} value={text}/>
+        <TextInput style={styles.input} onChangeText={onChangeText} value={text} />
         <View style={styles.button}>
           <Button
             title="検索"
@@ -88,10 +99,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginHorizontal: 12,
     justifyContent: "space-around",
-    marginBottom:12
+    marginBottom: 12,
   },
-  button :{
+  button: {
     borderRadius: 10,
     backgroundColor: "#594639",
-  }
+  },
 })

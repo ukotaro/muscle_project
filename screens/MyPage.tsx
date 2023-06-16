@@ -6,6 +6,8 @@ import { RootStackParamList } from "../navigation/StackNavigator"
 import { StackScreenProps } from "@react-navigation/stack"
 import SettingButton from "../components/uiParts/SettingButton"
 import { getUser } from "../utils/user_api"
+import { createUser } from "../utils/user_api"
+import { getUserPosts } from "../utils/post_api"
 
 type record = {
   name: string
@@ -18,7 +20,7 @@ export default function MyPage({ navigation }: StackScreenProps<RootStackParamLi
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const user = await getUser(1)
+        const user = await getUserPosts(1).then((res) => console.log(res))
         console.log(user)
       } catch (error) {
         console.log(error)

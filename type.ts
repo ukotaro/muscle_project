@@ -36,7 +36,7 @@ export type Training = {
     weight: number; //重さ(kg)
     times: number; //回数
     sets: number;  //セット数
-    created_at: string;
+    created_at?: string;
 }
 
 export type UserTotalWeight = {
