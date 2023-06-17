@@ -1,31 +1,48 @@
-import { Camera, CameraType } from "expo-camera"
-import React, { useState } from "react"
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native"
-import { MaterialCommunityIcons, AntDesign, FontAwesome5, Ionicons } from "@expo/vector-icons"
 
-export default function CameraShot() {
-  const [type, setType] = useState(CameraType.back)
-  const [permission, requestPermission] = Camera.useCameraPermissions()
-  const [camera, setCamera] = useState(null)
+import { Camera, CameraType } from "expo-camera";
+import React, { useState } from "react";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  MaterialCommunityIcons,
+  AntDesign,
+  FontAwesome5,
+  Ionicons,
+} from "@expo/vector-icons";
+import { RootStackParamList } from "../navigation/StackNavigator";
+import { StackScreenProps } from "@react-navigation/stack";
+
+export default function CameraShot({
+  route,
+  navigation,
+}: StackScreenProps<RootStackParamList, "カメラ">) {
+  const [type, setType] = useState(CameraType.back);
+  const [permission, requestPermission] = Camera.useCameraPermissions();
+  const [camera, setCamera] = useState(null);
+  const { eventId, weight, time, timeSet } = route.params;
   const [image, setImage] = useState<string | null>(null)
+
 
   if (!permission) {
     // Camera permissions are still loading
-    return <View />
+    return <View />;
   }
 
   if (!permission.granted) {
     // Camera permissions are not granted yet
     return (
       <View style={styles.container}>
-        <Text style={{ textAlign: "center" }}>We need your permission to show the camera</Text>
+        <Text style={{ textAlign: "center" }}>
+          We need your permission to show the camera
+        </Text>
         <Button onPress={requestPermission} title="grant permission" />
       </View>
-    )
+    );
   }
 
   function toggleCameraType() {
-    setType((current) => (current === CameraType.back ? CameraType.front : CameraType.back))
+    setType((current) =>
+      current === CameraType.back ? CameraType.front : CameraType.back
+    );
   }
   const takePicture = async () => {
     if (camera) {
@@ -55,13 +72,26 @@ export default function CameraShot() {
             }}
             onPress={takePicture}
           />
-          <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              toggleCameraType();
+              setTimeout(() => {
+                navigation.navigate("最終確認", {
+                  eventId: eventId,
+                  weight: weight,
+                  time: time,
+                  timeSet: timeSet,
+                });
+              }, 2500);
+            }}
+          >
             <Ionicons size={60} color="#594639" name="camera-reverse" />
           </TouchableOpacity>
         </View>
       </Camera>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -78,6 +108,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     backgroundColor: "transparent",
     justifyContent: "space-evenly",
+
     margin: 64,
     marginLeft:100
   },
@@ -91,4 +122,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
   },
-})
+});
