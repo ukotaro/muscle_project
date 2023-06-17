@@ -10,7 +10,7 @@ export default function EventImage({ eventId }: Props) {
     <View style={styles.container}>
       <Image
         style={styles.imageContainer}
-        source={require("../../assets/dumbbell.png")}
+        source={require("../../assets/35555.png")}
       />
       <Text style={styles.textContainer}>ベンチプレス</Text>
     </View>
@@ -18,7 +18,7 @@ export default function EventImage({ eventId }: Props) {
     <View style={styles.container}>
       <Image
         style={styles.imageContainer}
-        source={require("../../assets/dumbbell.png")}
+        source={require("../../assets/36666.png")}
       />
       <Text style={styles.textContainer}>スクワット</Text>
     </View>
@@ -26,7 +26,7 @@ export default function EventImage({ eventId }: Props) {
     <View style={styles.container}>
       <Image
         style={styles.imageContainer}
-        source={require("../../assets/dumbbell.png")}
+        source={require("../../assets/37777.png")}
       />
       <Text style={styles.textContainer}>デッドリフト</Text>
     </View>
