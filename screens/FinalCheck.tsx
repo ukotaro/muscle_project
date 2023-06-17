@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Alert } from "react-native";
 import BrownButton from "../components/uiParts/button";
 import { RootStackParamList } from "../navigation/StackNavigator";
 import { StackScreenProps } from "@react-navigation/stack";
@@ -9,11 +9,45 @@ import NameRecord from "../components/uiParts/NameRecord";
 import Post from "../components/uiGroup/Post";
 import PostCheck from "../components/uiGroup/PostCheck";
 import BorderButton from "../components/uiParts/BorderButton";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createTraining } from "../utils/training_api";
 import { createPost } from "../utils/post_api";
 import { Training } from "../type";
 import { getUser } from "../utils/user_api";
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
+
+type Subscription = {
+  remove: () => void;
+};
+
+const requestPermissionsAsync = async () => {
+  const { granted } = await Notifications.getPermissionsAsync();
+  if (granted) {
+    return;
+  }
+  await Notifications.requestPermissionsAsync();
+};
+
+const scheduleNotificationAsync = async () => {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      body: "範馬刃牙がトレーニングしました",
+      title: "チームゴリラ",
+    },
+    trigger: {
+      seconds: 1,
+    },
+  });
+};
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
 
 export default function FinalCheck({
   route,
@@ -22,7 +56,9 @@ export default function FinalCheck({
   const [userId, setUserId] = React.useState<number>(1);
   const [userImageUrl, setUserImageUrl] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
+
   useEffect(() => {
+    requestPermissionsAsync();
     const fetchData = async () => {
       try {
         const user = await getUser(1);
@@ -77,6 +113,7 @@ export default function FinalCheck({
             onPress={() => {
               handleButtonPress();
               navigation.navigate("タイムライン");
+              scheduleNotificationAsync();
             }}
           ></BrownButton>
         </View>
