@@ -71,7 +71,7 @@ export default function FinalCheck({
     };
     fetchData();
   }, []);
-  const { eventId, weight, time, timeSet } = route.params;
+  const { eventId, weight, time, timeSet, image } = route.params;
   const training = {
     user_id: 1,
     menu_id: eventId,
@@ -122,7 +122,7 @@ export default function FinalCheck({
         name={userName}
         profileImageUrl="https://blog-imgs-93.fc2.com/n/w/1/nw11/20150619_uchimurateruyoshi_32.jpg"
         record="ベンチプレス 500kg 30000回"
-        bodyImageUrl="https://newsatcl-pctr.c.yimg.jp/t/amd-img/20230408-00010000-vitup-000-1-view.jpg?pri=l&w=521&h=640&exp=10800"
+        bodyImageUrl={image}
         comment={comment}
         setComment={setComment}
       />

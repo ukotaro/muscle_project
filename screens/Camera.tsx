@@ -1,4 +1,3 @@
-
 import { Camera, CameraType } from "expo-camera";
 import React, { useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -19,8 +18,7 @@ export default function CameraShot({
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [camera, setCamera] = useState(null);
   const { eventId, weight, time, timeSet } = route.params;
-  const [image, setImage] = useState<string | null>(null)
-
+  const [image, setImage] = useState<string | null>(null);
 
   if (!permission) {
     // Camera permissions are still loading
@@ -46,11 +44,11 @@ export default function CameraShot({
   }
   const takePicture = async () => {
     if (camera) {
-      const image = await camera.takePictureAsync({})
-      setImage(image.uri)
-      console.log(image)
+      const image = await camera.takePictureAsync({});
+      setImage(image.uri);
+      console.log(image);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -58,7 +56,7 @@ export default function CameraShot({
         style={styles.camera}
         type={type}
         ref={(ref) => {
-          setCamera(ref)
+          setCamera(ref);
         }}
       >
         <View style={styles.buttonContainer}>
@@ -70,20 +68,23 @@ export default function CameraShot({
               borderWidth: 5,
               borderColor: "#594639",
             }}
-            onPress={takePicture}
-          />
-          <TouchableOpacity
-            style={styles.button}
             onPress={() => {
-              toggleCameraType();
+              takePicture();
               setTimeout(() => {
                 navigation.navigate("最終確認", {
                   eventId: eventId,
                   weight: weight,
                   time: time,
                   timeSet: timeSet,
+                  image: image,
                 });
               }, 2500);
+            }}
+          />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              toggleCameraType();
             }}
           >
             <Ionicons size={60} color="#594639" name="camera-reverse" />
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
 
     margin: 64,
-    marginLeft:100
+    marginLeft: 100,
   },
   button: {
     flex: 1,
