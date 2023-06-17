@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Training} from "../type";
 const api = axios.create({
-    baseURL: "http://localhost:8020",
+    baseURL: "http://18.233.93.14:8080"
 })
 // トレーニングの取得
 export const getTraining = async (id: number) => {

@@ -3,8 +3,8 @@ import axios from "axios";
 import { TrainingGroup, UserTotalWeight, Post } from "../type";
 
 const api = axios.create({
-  baseURL: "http://localhost:8020",
-});
+    baseURL: "http://18.233.93.14:8080"
+})
 //グループ一覧の取得
 export const getGroups = async () => {
   try {

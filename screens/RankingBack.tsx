@@ -3,14 +3,16 @@ import { Text, View, FlatList } from "react-native"
 import { NavigationContainer } from "@react-navigation/native"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 import RankingWeight from "../components/uiParts/RankingWeight"
-import { getGroupPosts } from "../utils/group_api"
+import { getGroupPosts, getRanking } from "../utils/group_api"
 
 // Settingタブで表示される画面内容
 export default function RankingBack() {
+  const [data, setData] = React.useState()
   React.useEffect(() => {
     const fetchGroupPosts = async () => {
       try {
-        const groups = await getGroupPosts(3)
+        const groups = await getRanking(1, 2)
+        setData(groups)
         console.log(groups)
       } catch (error) {
         console.log(error)
@@ -19,26 +21,7 @@ export default function RankingBack() {
 
     fetchGroupPosts()
   }, [])
-  const dammyData = [
-    {
-      rank: 1,
-      name: "範馬勇次郎",
-      weight: 500000,
-      uri: "https://m-78.jp/wp-content/uploads/2022/12/thumb_decker_ragon.jpg",
-    },
-    {
-      rank: 2,
-      name: "範馬刃牙",
-      weight: 636363636,
-      uri: "https://www.cnn.co.jp/storage/2023/01/27/d6c727430eb83a7008c6d9f438a4acae/leopard-2-file-101317-super-169.jpg",
-    },
-    {
-      rank: 3,
-      name: "花山薫",
-      weight: 600000,
-      uri: "https://askul.c.yimg.jp/img/product/3L2/NW94013_3L2.jpg",
-    },
-  ]
+
   return (
     <View
       style={{
@@ -47,9 +30,16 @@ export default function RankingBack() {
       }}
     >
       <FlatList
-        data={dammyData}
-        renderItem={({ item }) => (
-          <RankingWeight rank={item.rank} name={item.name} weight={item.weight} uri={item.uri} />
+        data={data}
+        renderItem={({ item, index }) => (
+          <RankingWeight
+            rank={index + 1}
+            name={item.User.name}
+            weight={item.Total_weight}
+            uri={
+              "https://yt3.googleusercontent.com/ytc/AGIKgqNFPZVpvvBHWw5mRjQY3UQNDBR7_PxSmRwHactimA=s900-c-k-c0x00ffffff-no-rj"
+            }
+          />
         )}
       />
     </View>

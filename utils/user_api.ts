@@ -5,7 +5,7 @@ import { User } from '../type';
 
 
 const api = axios.create({
-    baseURL: "http://localhost:8020",
+    baseURL: "http://18.233.93.14:8080"
 })
 // ユーザーの作成
 // 名前、メールアドレス、パスワードは必須、トレーニンググループと画像ファイルは任意
