@@ -1,36 +1,41 @@
-import * as React from "react"
-import { View } from "react-native"
-import { createStackNavigator } from "@react-navigation/stack"
-import FirstBottomTabScreen from "../screens/TimeLine"
-import SecondBottomTabScreen from "../screens/MyPage"
-import { NavigationContainer, Route } from "@react-navigation/native"
-import GroupList from "../screens/GroupList"
-import Header from "../components/uiParts/Header"
-import RankingTabNavigator from "./RankingTabNavigator"
-import Setting from "../screens/Setting"
-import EditReportPage from "../screens/EditReportPage"
-import PostEditPage from "../screens/PostEditPage"
-import MyPage from "../screens/MyPage"
-import TimeLine from "../screens/TimeLine"
-import FinalCheck from "../screens/FinalCheck"
-import { Camera } from "expo-camera"
-import CameraShot from "../screens/Camera"
+import * as React from "react";
+import { View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import FirstBottomTabScreen from "../screens/TimeLine";
+import SecondBottomTabScreen from "../screens/MyPage";
+import { NavigationContainer, Route } from "@react-navigation/native";
+import GroupList from "../screens/GroupList";
+import Header from "../components/uiParts/Header";
+import RankingTabNavigator from "./RankingTabNavigator";
+import Setting from "../screens/Setting";
+import EditReportPage from "../screens/EditReportPage";
+import PostEditPage from "../screens/PostEditPage";
+import MyPage from "../screens/MyPage";
+import TimeLine from "../screens/TimeLine";
+import FinalCheck from "../screens/FinalCheck";
+import { Camera } from "expo-camera";
+import CameraShot from "../screens/Camera";
 
 export type RootStackParamList = {
-  マイ記録: undefined
-  プロフィール設定: undefined
-  "投稿・記録": undefined
-  投稿編集: { eventId: number }
-  タイムライン: undefined
-  カメラ: undefined
+  マイ記録: undefined;
+  プロフィール設定: undefined;
+  "投稿・記録": undefined;
+  投稿編集: { eventId: number };
+  タイムライン: undefined;
+  カメラ: {
+    eventId: number;
+    weight: number | undefined;
+    time: number | undefined;
+    timeSet: number | undefined;
+  };
   最終確認: {
-    eventId: number
-    weight: number | undefined
-    time: number | undefined
-    timeSet: number | undefined
-  }
-}
-const Stack = createStackNavigator<RootStackParamList>()
+    eventId: number;
+    weight: number | undefined;
+    time: number | undefined;
+    timeSet: number | undefined;
+  };
+};
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function MyStack() {
   return (
@@ -43,5 +48,5 @@ export default function MyStack() {
       <Stack.Screen name="最終確認" component={FinalCheck} />
       <Stack.Screen name="カメラ" component={CameraShot} />
     </Stack.Navigator>
-  )
+  );
 }
