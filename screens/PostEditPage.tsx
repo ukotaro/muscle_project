@@ -47,7 +47,7 @@ export default function PostEditPage({
           <BrownButton
             title="撮影する"
             onPress={() => {
-              navigation.navigate("最終確認", {
+              navigation.navigate("カメラ", {
                 eventId: eventId,
                 weight: weight,
                 time: time,
