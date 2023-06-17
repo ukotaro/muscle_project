@@ -1,3 +1,4 @@
+
 import { Camera, CameraType } from "expo-camera";
 import React, { useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -18,6 +19,8 @@ export default function CameraShot({
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [camera, setCamera] = useState(null);
   const { eventId, weight, time, timeSet } = route.params;
+  const [image, setImage] = useState<string | null>(null)
+
 
   if (!permission) {
     // Camera permissions are still loading
@@ -41,19 +44,33 @@ export default function CameraShot({
       current === CameraType.back ? CameraType.front : CameraType.back
     );
   }
+  const takePicture = async () => {
+    if (camera) {
+      const image = await camera.takePictureAsync({})
+      setImage(image.uri)
+      console.log(image)
+    }
+  }
 
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
+      <Camera
+        style={styles.camera}
+        type={type}
+        ref={(ref) => {
+          setCamera(ref)
+        }}
+      >
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={{
-              width: 40,
-              height: 40,
+              width: 60,
+              height: 60,
               borderRadius: 50,
               borderWidth: 5,
               borderColor: "#594639",
             }}
+            onPress={takePicture}
           />
           <TouchableOpacity
             style={styles.button}
@@ -90,8 +107,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-end",
     backgroundColor: "transparent",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
+
     margin: 64,
+    marginLeft:100
   },
   button: {
     flex: 1,
