@@ -32,11 +32,11 @@ const requestPermissionsAsync = async () => {
 const scheduleNotificationAsync = async () => {
   await Notifications.scheduleNotificationAsync({
     content: {
-      body: "範馬刃牙がトレーニングしました",
-      title: "チームゴリラ",
+      body: "今日のトレーニングは大丈夫ですか？梅田さんはやっていますよ！",
+      title: "チーム:なかマッスル",
     },
     trigger: {
-      seconds: 1,
+      seconds: 5,
     },
   });
 };
