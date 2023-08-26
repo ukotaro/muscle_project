@@ -55,7 +55,7 @@ export default function GroupList() {
           <Button
             title="検索"
             onPress={() => {
-              Alert.alert("そんなチームねえよばーか消えろ")
+              Alert.alert("そのようなチームはございません")
             }}
             color="#F8F4E6"
           ></Button>

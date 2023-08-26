@@ -1,28 +1,21 @@
-import { StyleSheet, View, Text, Image } from "react-native";
-import React from "react";
-import NameRecord from "../uiParts/NameRecord";
+import { StyleSheet, View, Text, Image } from "react-native"
+import React from "react"
+import NameRecord from "../uiParts/NameRecord"
 
 type Props = {
-  profileImageUrl: string;
-  name: string;
-  record: string;
-  bodyImageUrl: string;
-};
+  profileImageUrl: string
+  name: string
+  record: string
+  bodyImageUrl: string
+}
 
-export default function Post({
-  profileImageUrl,
-  name,
-  record,
-  bodyImageUrl,
-}: Props) {
+export default function Post({ profileImageUrl, name, record, bodyImageUrl }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.profileContainer}>
         <Image
           style={styles.profileImageContainer}
-          source={{
-            uri: profileImageUrl,
-          }}
+          source={typeof profileImageUrl === "string" ? { uri: profileImageUrl } : profileImageUrl}
         />
         <View style={styles.nameRecordContainer}>
           <NameRecord name={name} record={record} />
@@ -30,12 +23,10 @@ export default function Post({
       </View>
       <Image
         style={styles.bodyImageContainer}
-        source={{
-          uri: bodyImageUrl,
-        }}
+        source={typeof bodyImageUrl === "string" ? { uri: bodyImageUrl } : bodyImageUrl}
       />
     </View>
-  );
+  )
 }
 const styles = StyleSheet.create({
   container: {
@@ -45,7 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontColor: "#594639",
     width: "100%",
-    marginVertical:20
+    marginVertical: 20,
   },
   profileContainer: {
     flexDirection: "row",
@@ -63,9 +54,9 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginRight: "5%",
     alignSelf: "flex-end",
-    borderRadius:20
+    borderRadius: 20,
   },
   nameRecordContainer: {
     marginLeft: 20,
   },
-});
+})
