@@ -15,6 +15,7 @@ import TimeLine from "../screens/TimeLine";
 import FinalCheck from "../screens/FinalCheck";
 import { Camera } from "expo-camera";
 import CameraShot from "../screens/Camera";
+import PostDetail from "../screens/PostDetail";
 
 export type RootStackParamList = {
   マイ記録: undefined;
@@ -35,6 +36,7 @@ export type RootStackParamList = {
     timeSet: number | undefined;
     image: string | null;
   };
+  投稿詳細: undefined;
 };
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -48,6 +50,7 @@ export default function MyStack() {
       <Stack.Screen name="投稿編集" component={PostEditPage} />
       <Stack.Screen name="最終確認" component={FinalCheck} />
       <Stack.Screen name="カメラ" component={CameraShot} />
+      <Stack.Screen name="投稿詳細" component={PostDetail} />
     </Stack.Navigator>
   );
 }
