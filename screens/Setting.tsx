@@ -1,87 +1,156 @@
-import * as React from "react"
-import { Text, View, StyleSheet, TextInput, Image, Alert, TouchableOpacity } from "react-native"
-import BrownButton from "../components/uiParts/button"
-import { NavigationProp } from "@react-navigation/native"
-import { RootStackParamList } from "../navigation/StackNavigator"
-import { StackScreenProps } from "@react-navigation/stack"
-import { getUser } from "../utils/user_api"
-import { updateUser } from "../utils/user_api"
+import * as React from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  Image,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
+import BrownButton from "../components/uiParts/button";
+import { NavigationProp } from "@react-navigation/native";
+import { RootStackParamList } from "../navigation/StackNavigator";
+import { StackScreenProps } from "@react-navigation/stack";
+import { getUser } from "../utils/user_api";
+import { updateUser } from "../utils/user_api";
+import { ComponentProps } from "react";
 
 // import { launchCamera, launchImageLibrary } from "react-native-image-picker"
+
+import { FlatList, SafeAreaView, StatusBar } from "react-native";
+
+function generateRandomData(length = 168) {
+  const data = [];
+  for (let i = 0; i < length; i++) {
+    data.push(Math.floor(Math.random() * 4)); // 0から3までのランダムな整数
+  }
+  return data;
+}
+
+const DATA = generateRandomData();
+
+type FlatListProps = ComponentProps<typeof FlatList<number>>;
+
+// 1行あたりのitem数を指定
+const COLUMNS = 7;
 
 export default function Setting({
   navigation,
 }: StackScreenProps<RootStackParamList, "プロフィール設定">) {
-  const [text, onChangeText] = React.useState<string>("名前を入力してください")
-  const [userId, setUserId] = React.useState<number>(1)
-  const [userGroupId, setUserGroupId] = React.useState<number>(1)
-  React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const user = await getUser(1)
-        console.log(user)
-        onChangeText(user.name)
-        setUserId(user.id)
-        setUserGroupId(user.training_group_id)
-      } catch (error) {
-        console.log(error)
-      }
+  const handleItemClick = () => {
+    navigation.navigate("投稿詳細");
+  };
+
+  const renderItem: FlatListProps["renderItem"] = (props) => {
+    const { item, index } = props;
+    const isLastItem = index === DATA.length - 1;
+
+    return isLastItem ? (
+      <>
+        <Item item={item} />
+        {
+          // columnsの指定数に対し、item何個分データが足りないかを計算し、その分spacerとして表示
+          Array.from({ length: COLUMNS - (index % COLUMNS) - 1 }).map(() => (
+            <View style={[styles.item, { backgroundColor: "lightgrey" }]} />
+          ))
+        }
+      </>
+    ) : (
+      <Item item={item} />
+    );
+  };
+
+  const characters = "日月火水木金土".split("");
+  const getLastSixMonth = () => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1;
+
+    const months = [];
+    for (let i = 0; i < 6; i++) {
+      const month = ((currentMonth - i - 1 + 12) % 12) + 1;
+      months.push(month);
     }
-    fetchData()
-  }, [])
-  const handleUpdateUser = async () => {
-    try {
-      const updatedUser = await updateUser(userId, text, "jofafan@example.com", userGroupId)
-      console.log(updatedUser)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+
+    return months;
+  };
+  const months = getLastSixMonth();
 
   return (
-    <View style={styles.settingContainer}>
-      <Image
-        source={{
-          uri: "https://yt3.googleusercontent.com/ytc/AGIKgqNFPZVpvvBHWw5mRjQY3UQNDBR7_PxSmRwHactimA=s900-c-k-c0x00ffffff-no-rj",
-        }}
-        style={{
-          width: 150,
-          height: 150,
-          marginTop: 100,
-          marginBottom: 30,
-          borderRadius: 100,
-        }}
-      ></Image>
-      <TextInput style={styles.input} onChangeText={onChangeText} value={text} />
-      <View style={styles.button}>
-        <BrownButton
-          title="確定"
-          onPress={() => {
-            handleUpdateUser()
-            navigation.navigate("カメラ")
-          }}
-        ></BrownButton>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>トレーニング履歴</Text>
+      <View style={styles.container2}>
+        {characters.map((char, index) => (
+          <Text key={index} style={styles.character}>
+            {char}
+          </Text>
+        ))}
       </View>
-    </View>
-  )
+      <TouchableOpacity onPress={handleItemClick}>
+        <View>
+          <FlatList<number>
+            data={DATA}
+            numColumns={COLUMNS}
+            renderItem={renderItem}
+          />
+        </View>
+      </TouchableOpacity>
+    </SafeAreaView>
+  );
 }
+
+const Item = ({ item }) => {
+  let backgroundColor;
+
+  switch (item) {
+    case 0:
+      backgroundColor = "rgba(89, 70, 57, 1)"; // 100% 不透明
+      break;
+    case 1:
+      backgroundColor = "rgba(89, 70, 57, 0.8)"; // 80% 不透明
+      break;
+    case 2:
+      backgroundColor = "rgba(89, 70, 57, 0.6)"; // 60% 不透明
+      break;
+    case 3:
+      backgroundColor = "rgba(89, 70, 57, 0.4)"; // 40% 不透明
+      break;
+    default:
+      backgroundColor = "rgba(89, 70, 57, 1)"; // デフォルトの色
+  }
+
+  return <View style={[styles.item, { backgroundColor }]}></View>;
+};
+
 const styles = StyleSheet.create({
-  settingContainer: {
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  container2: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    paddingHorizontal: 5, // 余白を調整する場合
+  },
+  character: {
+    flex: 1,
+    textAlign: "center",
+  },
+  item: {
+    flex: 1,
+    aspectRatio: 1,
+    margin: 2,
     alignItems: "center",
-    flexDirection: "column",
-    height: "100%",
-    backgroundColor: "#F8F4E6",
+    justifyContent: "center",
   },
-  input: {
-    borderWidth: 1,
-    padding: 15,
-    borderRadius: 10,
-    borderColor: "#594639",
-    width: "80%",
-    fontSize: 15,
+  title: {
+    textAlign: "center",
+    fontSize: 32,
+    color: "#594639",
   },
-  button: {
-    width: "40%",
-    marginTop: 30,
+  week: {
+    fontSize: 20,
+    color: "#594639",
   },
-})
+});
