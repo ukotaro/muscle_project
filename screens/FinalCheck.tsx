@@ -32,11 +32,11 @@ const requestPermissionsAsync = async () => {
 const scheduleNotificationAsync = async () => {
   await Notifications.scheduleNotificationAsync({
     content: {
-      body: "範馬刃牙がトレーニングしました",
-      title: "チームゴリラ",
+      body: "今日のトレーニングは大丈夫ですか？梅田さんはやっていますよ！",
+      title: "チーム:なかマッスル",
     },
     trigger: {
-      seconds: 1,
+      seconds: 5,
     },
   })
 }
@@ -68,10 +68,10 @@ export default function FinalCheck({
       } catch (error) {
         console.log(error)
       }
-    }
-    fetchData()
-  }, [])
-  const { eventId, weight, time, timeSet } = route.params
+    };
+    fetchData();
+  }, []);
+  const { eventId, weight, time, timeSet, image } = route.params;
   const training = {
     user_id: 1,
     menu_id: eventId,
@@ -122,7 +122,7 @@ export default function FinalCheck({
         name={userName}
         profileImageUrl="https://blog-imgs-93.fc2.com/n/w/1/nw11/20150619_uchimurateruyoshi_32.jpg"
         record="ベンチプレス 500kg 30000回"
-        bodyImageUrl="https://newsatcl-pctr.c.yimg.jp/t/amd-img/20230408-00010000-vitup-000-1-view.jpg?pri=l&w=521&h=640&exp=10800"
+        bodyImageUrl={image}
         comment={comment}
         setComment={setComment}
       />

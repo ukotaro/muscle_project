@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   bodyImageContainer: {
     width: "90%",
-    height: 250,
+    height: 350,
     marginTop: 15,
     marginRight: "5%",
     alignSelf: "flex-end",

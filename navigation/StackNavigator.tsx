@@ -33,6 +33,7 @@ export type RootStackParamList = {
     weight: number | undefined;
     time: number | undefined;
     timeSet: number | undefined;
+    image: string | null;
   };
 };
 const Stack = createStackNavigator<RootStackParamList>();
