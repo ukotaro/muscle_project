@@ -32,25 +32,22 @@ export default function MyPage({ navigation }: StackScreenProps<RootStackParamLi
 
   const damyData: record[] = [
     {
-      bodyImageUrl:
-        "https://newsatcl-pctr.c.yimg.jp/t/amd-img/20230408-00010000-vitup-000-1-view.jpg?pri=l&w=521&h=640&exp=10800",
-      name: "マスオさん",
-      record: "ベンチプレス 500kg 7000回",
-      profileImageUrl: "https://blog-imgs-93.fc2.com/n/w/1/nw11/20150619_uchimurateruyoshi_32.jpg",
+      bodyImageUrl: require("../assets/muscle.png"),
+      name: "りゅーたん",
+      record: "ベンチプレス 50kg 7回",
+      profileImageUrl: require("../assets/topimg.png"),
     },
     {
-      bodyImageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFEGcAp4g6HtiLSN7r0Qalc3oYFJnXSShCblsZE5f-dFL6eM3mpo7gkOu0QiomHZiFbII&usqp=CAU",
-      name: "マスオさん",
-      record: "スクワット 700kg 4242回",
-      profileImageUrl: "https://blog-imgs-93.fc2.com/n/w/1/nw11/20150619_uchimurateruyoshi_32.jpg",
+      bodyImageUrl: require("../assets/muscle2.png"),
+      name: "りゅーたん",
+      record: "スクワット 70kg 20回",
+      profileImageUrl: require("../assets/topimg.png"),
     },
     {
-      bodyImageUrl:
-        "https://stat.ameba.jp/user_images/20190823/14/ragu5093/02/7c/j/o0300043514548068133.jpg",
-      name: "マスオさん",
-      record: "デッドリフト 400kg 9999回",
-      profileImageUrl: "https://blog-imgs-93.fc2.com/n/w/1/nw11/20150619_uchimurateruyoshi_32.jpg",
+      bodyImageUrl: require("../assets/muscle3.png"),
+      name: "りゅーたん",
+      record: "デッドリフト 80kg 9回",
+      profileImageUrl: require("../assets/topimg.png"),
     },
   ]
   return (
