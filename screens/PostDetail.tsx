@@ -23,9 +23,7 @@ export default function PostDetail({
         <View style={styles.profileContainer}>
           <Image
             style={styles.profileImageContainer}
-            source={{
-              uri: "https://blog-imgs-93.fc2.com/n/w/1/nw11/20150619_uchimurateruyoshi_32.jpg",
-            }}
+            source={require("../assets/topimg.png")}
           />
           <View style={styles.nameRecordContainer}>
             <NameRecord name="りゅうたん" record="デッドリフト 400kg 9999回" />
@@ -33,9 +31,7 @@ export default function PostDetail({
         </View>
         <Image
           style={styles.bodyImageContainer}
-          source={{
-            uri: "https://blog-imgs-93.fc2.com/n/w/1/nw11/20150619_uchimurateruyoshi_32.jpg",
-          }}
+          source={require("../assets/muscle2.png")}
         />
       </View>
     </View>
